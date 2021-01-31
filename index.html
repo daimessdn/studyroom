@@ -23,13 +23,31 @@
       margin-top: 5px;
       border: 1px solid #000;
     }
+
+    #file-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: inline-block;
+    }
+
+    #file-list li {
+      width: 200px;
+      padding: 10px;
+      margin: 5px;
+      border: 1px solid #000;
+    }
     
+    b {
+      cursor: pointer;
+      float: right;
+    }
   </style>
 </head>
 <body>
   <h1>studyroom</h1>
 
-  <button onclick="document.fileAdd.style.display = document.fileAdd.style.display === 'block' ? 'none' : 'block';">Add document</button>
+  <button onclick="document.fileAdd.style.display = document.fileAdd.style.display === 'inline-block' ? 'none' : 'inline-block';" style="display: block;">Add document</button>
 
   <form name="fileAdd">
     <label for="filename">Type file name:</label>
@@ -45,31 +63,26 @@
   <script>
     let fileList = document.querySelector("#file-list"),
         fileElements,
-        files = [
-          "my diary",
-          "science project",
-          "weekly report"
-        ];
+        files = [];
 
     const addFile = (filename) => {
       if (filename != "") {
-        files.push(filename);
+        files.push({
+          filename: filename,
+          content: null,
+          createdAt: new Date(),
+          lastSave: null
+        });
       }
 
       getDocuments(files);
       document.fileAdd.filename.value = "";
     };
 
-    document.fileAdd.addEventListener("submit", (event) => {
-      event.preventDefault();
-      addFile(document.fileAdd.filename.value);
-      document.fileAdd.style.display = "none";
-    });
-
     const deleteDocuments = (element) => {
       console.log(JSON.stringify(element.textContent));
       files = files.filter(file => {
-        return (file + " x") != `${element.textContent}`
+        return (file.filename + " x") != `${element.textContent}`;
       });
 
       getDocuments(files);
@@ -77,14 +90,50 @@
 
     const getDocuments = (files) => {
       fileList.innerHTML = "";
-      files.forEach(file => {
-        fileList.innerHTML += `<li>${file} <b onclick="deleteDocuments(this.parentElement);">x</b></li>`;
-      });
+
+      let loadedDate = new Date();
+
+      if (files.length > 0) {
+        files.reverse().forEach(file => {
+          fileList.innerHTML += `
+          <li draggable="true">
+            ${file.filename} <br />
+            created ${getFileHistory(loadedDate, file.createdAt)}
+            <b onclick="deleteDocuments(this.parentElement);">x</b>
+          </li>`;
+          
+          // console.log(new Date().getTime() - file.createdAt.getTime());
+        });
+      } else {
+        fileList.innerHTML = "There's nothing here. Create a new one.";
+      }
 
       fileElements = Array.prototype.slice.call(fileList.children);
     };
 
+    const getFileHistory = (currentDate, recentDate) => {
+      const differences = currentDate - recentDate;
+
+      if (differences >= 1e3 && differences < 6e4) {
+        return Math.round(differences / 1e3) == 1 ? `one second ago` : `${Math.round(differences / 1e3)} seconds ago`;
+      } else if (differences >= 6e4 && differences < 36e5) {
+        return Math.round(differences / 6e4) == 1 ? `a minute ago` : `${Math.round(differences / 6e4)} minutes ago`;
+      } else if (differences >= 36e5  && differences < 864e5) {
+        return Math.round(differences / 36e5) == 1 ? `a hour ago` : `${Math.round(differences / 36e5)} hours ago`;
+      } else if (differences >= 864e5 && differences < 31536e6) {
+        return Math.round(differences / 864e5) == 1 ? `a day ago` : `${Math.round(differences / 864e5)} days ago`;
+      } else {
+        return "just now";
+      }
+    };
+
     document.addEventListener("DOMContentLoaded", getDocuments(files));
+
+    document.fileAdd.addEventListener("submit", (event) => {
+      event.preventDefault();
+      addFile(document.fileAdd.filename.value);
+      document.fileAdd.style.display = "none";
+    });
   </script>
 </body>
 </html>
