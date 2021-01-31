@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>studyroom</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+
+  <style type="text/css">
+    body {
+      font-family: "Work Sans", sans-serif;
+    }
+
+    h1 {
+      font-family: "Satisfy", sans-serif;
+    }
+
+    form[name='fileAdd'] {
+      display: none;
+      padding: 5px;
+      margin-top: 5px;
+      border: 1px solid #000;
+    }
+    
+  </style>
+</head>
+<body>
+  <h1>studyroom</h1>
+
+  <button onclick="document.fileAdd.style.display = document.fileAdd.style.display === 'block' ? 'none' : 'block';">Add document</button>
+
+  <form name="fileAdd">
+    <label for="filename">Type file name:</label>
+    <input type="text" name="filename" id="filename-text-field" />
+  
+    <button type="submit">Create</button>
+  </form>
+
+  <p>File list:<br />
+    <ul id="file-list"></ul>
+  </p>
+
+  <script>
+    let fileList = document.querySelector("#file-list"),
+        fileElements,
+        files = [
+          "my diary",
+          "science project",
+          "weekly report"
+        ];
+
+    const addFile = (filename) => {
+      if (filename != "") {
+        files.push(filename);
+      }
+
+      getDocuments(files);
+      document.fileAdd.filename.value = "";
+    };
+
+    document.fileAdd.addEventListener("submit", (event) => {
+      event.preventDefault();
+      addFile(document.fileAdd.filename.value);
+      document.fileAdd.style.display = "none";
+    });
+
+    const deleteDocuments = (element) => {
+      console.log(JSON.stringify(element.textContent));
+      files = files.filter(file => {
+        return (file + " x") != `${element.textContent}`
+      });
+
+      getDocuments(files);
+    };
+
+    const getDocuments = (files) => {
+      fileList.innerHTML = "";
+      files.forEach(file => {
+        fileList.innerHTML += `<li>${file} <b onclick="deleteDocuments(this.parentElement);">x</b></li>`;
+      });
+
+      fileElements = Array.prototype.slice.call(fileList.children);
+    };
+
+    document.addEventListener("DOMContentLoaded", getDocuments(files));
+  </script>
+</body>
+</html>
