@@ -1,0 +1,34 @@
+body {
+  font-family: "Work Sans", sans-serif;
+}
+
+h1 {
+  font-family: "Satisfy", sans-serif;
+}
+
+form[name='fileAdd'] {
+  display: none;
+  padding: 5px;
+  margin-top: 5px;
+  border: 1px solid #000;
+}
+
+#file-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+
+#file-list li {
+  border-radius: 4px;
+  width: 200px;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #000;
+}
+
+b {
+  cursor: pointer;
+  float: right;
+}
