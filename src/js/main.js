@@ -1,6 +1,21 @@
 let fileList = document.querySelector("#file-list"),
         fileElements,
-        files = [];
+        files = [{
+                  "id": "document-recipe_for_dinner-0",
+                  "filename": "recipe for dinner",
+                  "content": "tenderloin steak, vinegar, shoyu, bean, egg, carrot.",
+                  "createdAt": "2021-02-01T11:53:41.975Z",
+                  "lastSave": null
+                },
+                {
+                  "id": "document-my_new_files-1",
+                  "filename": "my new files",
+                  "content": "hello world!",
+                  "createdAt": "2021-02-01T11:55:57.674Z",
+                  "lastSave": null
+                }];
+
+let editor = document.querySelector("#editor");
 
 const addFile = (filename) => {
   if (filename != "") {
@@ -34,9 +49,12 @@ const getDocuments = (files) => {
   if (files.length > 0) {
     files.reverse().forEach(file => {
       fileList.innerHTML += `
-      <li draggable="true" ondragstart="drag(event)" id="${file.id}">
-        ${file.filename} <br />
-        Created ${getFileHistory(loadedDate, file.createdAt)}
+      <li draggable="true"
+          ondragstart="drag(event)"
+          ondblclick="openDocumentInEditor('${file.filename}')"
+          id="${file.id}">
+        <span class="files-filename">${file.filename}</span> <br />
+        <span class="files-datecreated">Created ${getFileHistory(loadedDate, file.createdAt)}</span>
         <b onclick="deleteDocuments(this.parentElement);">x</b>
       </li>`;
       
