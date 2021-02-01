@@ -18,13 +18,13 @@ const openDocumentInEditor = (filename) => {
     </div>
   `;
 
-  let editorTitle = document.querySelector("#editor-file-title"),
-      editorToolbar = document.querySelector("#editor-file-toolbar"),
-      editorContent = document.querySelector("#editor-file-content");
+  editorTitle = document.querySelector("#editor-file-title");
+  editorToolbar = document.querySelector("#editor-file-toolbar");
+  editorContent = document.querySelector("#editor-file-content");
 
   editorTitle.addEventListener(
     "input", () => {
-      renameTitleInEditor(openedFile, editorTitle.innerHTML);
+      renameTitleInEditor(openedFile, editorTitle.textContent);
     }
   );
 
@@ -47,7 +47,13 @@ const renameTitleInEditor = (filename, newFilename) => {
     return file == filename;
   })[0];
 
-  files[files.indexOf(fileToBeRenamed)].filename = newFilename;
+  if (newFilename !== "") {
+    files[files.indexOf(fileToBeRenamed)].filename = newFilename;
+  } else {
+    files[files.indexOf(fileToBeRenamed)].filename = "Untitled document";
+    editorTitle.textContent = "Untitled document";
+  }
+
   files[files.indexOf(fileToBeRenamed)].lastSave = new Date();
 
   getDocuments(files);

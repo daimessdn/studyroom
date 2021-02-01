@@ -23,7 +23,10 @@ let fileList = document.querySelector("#file-list"),
               "lastSave": null
             }];
 
-let editor = document.querySelector("#editor");
+let editor = document.querySelector("#editor"),
+    editorTitle,
+    editorToolbar,
+    editorContent;
 
 const addFile = (filename) => {
   if (filename != "") {
