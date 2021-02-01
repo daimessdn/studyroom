@@ -41,12 +41,11 @@ const addFile = (filename) => {
       createdAt: new Date(),
       lastSave: null
     });
-
-    openDocumentInEditor(files[files.length - 1].filename);
   }
 
   getDocuments(files);
   document.fileAdd.filename.value = "";
+  openDocumentInEditor(files[files.length - 1].filename);
 };
 
 const deleteDocuments = (element) => {

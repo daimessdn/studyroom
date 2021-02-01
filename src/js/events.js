@@ -6,7 +6,7 @@ document.fileAdd.addEventListener("submit", (event) => {
   
   addFile(document.fileAdd.filename.value);
   
-  document.fileAdd.style.display = "none";
+  document.querySelector('#new-document-modal').style.display = 'none';
 });
 
 document.addEventListener("keydown", (event) => {

@@ -6,23 +6,22 @@
   <title>studyroom</title>
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
 
-  <link href="src/css/main.css" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+
+  <link href="src/css/main.css" rel="stylesheet">
+  <link href="src/css/modal.css" rel="stylesheet">
 </head>
 <body>
   <div id="main">
     <div id="sidebar">
-      <button onclick="document.fileAdd.style.display = document.fileAdd.style.display === 'inline-block' ? 'none' : 'inline-block';" style="display: block;">Add document</button>
+      <button id="add-document"
+              onclick="document.querySelector('#new-document-modal').style.display = 'flex';">
+                Add document
+      </button>
 
-      <form name="fileAdd">
-        <label for="filename">Type file name:</label>
-        <input type="text" name="filename" id="filename-text-field" />
-      
-        <button type="submit">Create</button>
-      </form>
-
-      <h2 class="sidebar-title">DOCUMENTS</h2>
+      <h2 class="sidebar-title">Documents</h2>
       <ul id="file-list"></ul>
     </div>
 
@@ -36,6 +35,27 @@
 
         <p class="welcome-content"><strong>Double-click</strong> the file of <strong>drag and drop</strong> the file here for open your file.</p>
       </div>
+    </div>
+  </div>
+
+  <div class="modal" id="new-document-modal">
+    <div class="modal-window">
+      <span class="close"
+            onclick="document.querySelector('#new-document-modal').style.display = 'none';">
+              <i class="fa fa-times"></i>
+      </span>
+
+      <form name="fileAdd">
+        <div class="form-field-section">
+
+          <label for="filename">Type file name:</label><br />
+          <input type="text" name="filename" id="filename-text-field" />
+        </div>
+      
+        <div class="form-field-section">
+          <button type="submit">Create</button>
+        </div>
+      </form>
     </div>
   </div>
 

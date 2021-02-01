@@ -33,7 +33,6 @@ const openDocumentInEditor = (filename) => {
   }
 
   openedFileElement = fileElements.filter(file => {
-    console.log(file)
     return file.children[0].textContent == filename;
   })[0];
   openedFileElement.style.border = "3px solid #2F242C";
