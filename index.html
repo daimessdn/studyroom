@@ -22,18 +22,20 @@
         <button type="submit">Create</button>
       </form>
 
-      <p>Document list:<br />
-        <ul id="file-list"></ul>
-      </p>
-
-      <p>studyroom 2021</p>
+      <h2 class="sidebar-title">DOCUMENTS</h2>
+      <ul id="file-list"></ul>
     </div>
 
     <div id="editor"
-          spellcheck="true"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)">
-      <strong>Double-click</strong> the file of <strong>drag and drop</strong> the file here for open your file.
+         spellcheck="true"
+         ondrop="drop(event)"
+         ondragover="allowDrop(event)">
+      <div class="welcome">
+        <img class="welcome-image" src="src/img/studyroom-welcome-image.svg" />
+        <h1 class="welcome-title">Welcome to <strong>studyroom</strong></h1>
+
+        <p class="welcome-content"><strong>Double-click</strong> the file of <strong>drag and drop</strong> the file here for open your file.</p>
+      </div>
     </div>
   </div>
 

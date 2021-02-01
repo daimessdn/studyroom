@@ -28,6 +28,16 @@ const openDocumentInEditor = (filename) => {
     }
   );
 
+  if (openedFileElement) {
+    openedFileElement.style.border = "3px solid #fff";
+  }
+
+  openedFileElement = fileElements.filter(file => {
+    console.log(file)
+    return file.children[0].textContent == filename;
+  })[0];
+  openedFileElement.style.border = "3px solid #2F242C";
+
   console.log(`document "${filename}" opened`);
 };
 

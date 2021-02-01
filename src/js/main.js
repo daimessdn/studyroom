@@ -1,27 +1,31 @@
 let fileList = document.querySelector("#file-list"),
     fileElements,
     openedFile,
-    files = [{
-              "id": "document-recipe_for_dinner-0",
-              "filename": "Recipe for dinner",
-              "content": "<ul><li>tenderloin steak</li><li>vinegar</li><li>shoyu</li><li>bean</li><li>egg</li><li>carrot</li>",
-              "createdAt": new Date("2021-02-01T11:53:41.975Z"),
-              "lastSave": null
-            },
-            {
-              "id": "document-my_new_file-1",
-              "filename": "My new file",
-              "content": "hello world!",
-              "createdAt": new Date("2021-02-01T11:55:57.674Z"),
-              "lastSave": null
-            },
-            {
-              "id": "document-weekly_report-1",
-              "filename": "Weekly report",
-              "content": "<h1>Weekly report</h1><p>Done some improvements in editing features, need to repair some bugs on interface.</p>",
-              "createdAt": new Date("2021-02-01T13:55:57.674Z"),
-              "lastSave": null
-            }];
+    openedFileElement;
+
+let files = [
+  {
+    "id": "document-recipe_for_dinner-0",
+    "filename": "Recipe for dinner",
+    "content": "<ul><li>tenderloin steak</li><li>vinegar</li><li>shoyu</li><li>bean</li><li>egg</li><li>carrot</li>",
+    "createdAt": new Date("2021-02-01T11:53:41.975Z"),
+    "lastSave": null
+  },
+  {
+    "id": "document-my_new_file-1",
+    "filename": "My new file",
+    "content": "hello world!",
+    "createdAt": new Date("2021-02-01T11:55:57.674Z"),
+    "lastSave": null
+  },
+  {
+    "id": "document-weekly_report-1",
+    "filename": "Weekly report",
+    "content": "<h1>Weekly report</h1><p>Done some improvements in editing features, need to repair some bugs on interface.</p>",
+    "createdAt": new Date("2021-02-01T13:55:57.674Z"),
+    "lastSave": null
+  }
+];
 
 let editor = document.querySelector("#editor"),
     editorTitle,
