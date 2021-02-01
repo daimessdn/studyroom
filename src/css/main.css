@@ -32,3 +32,13 @@ b {
   cursor: pointer;
   float: right;
 }
+
+#editor {
+  padding: 20px;
+  border: 1px solid #000;
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+}

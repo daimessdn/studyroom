@@ -5,6 +5,7 @@ let fileList = document.querySelector("#file-list"),
 const addFile = (filename) => {
   if (filename != "") {
     files.push({
+      id: `document-${filename.split(" ").join("_")}-${files.length}`,
       filename: filename,
       content: null,
       createdAt: new Date(),
@@ -33,9 +34,9 @@ const getDocuments = (files) => {
   if (files.length > 0) {
     files.reverse().forEach(file => {
       fileList.innerHTML += `
-      <li draggable="true">
+      <li draggable="true" ondragstart="drag(event)" id="${file.id}">
         ${file.filename} <br />
-        created ${getFileHistory(loadedDate, file.createdAt)}
+        Created ${getFileHistory(loadedDate, file.createdAt)}
         <b onclick="deleteDocuments(this.parentElement);">x</b>
       </li>`;
       
@@ -63,3 +64,17 @@ const getFileHistory = (currentDate, recentDate) => {
     return "just now";
   }
 };
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data).cloneNode(true));
+}
