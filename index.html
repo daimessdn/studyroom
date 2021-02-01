@@ -6,30 +6,35 @@
   <title>studyroom</title>
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
 
   <link href="src/css/main.css" rel="stylesheet"> 
 </head>
 <body>
-  <button onclick="document.fileAdd.style.display = document.fileAdd.style.display === 'inline-block' ? 'none' : 'inline-block';" style="display: block;">Add document</button>
+  <div id="main">
+    <div id="sidebar">
+      <button onclick="document.fileAdd.style.display = document.fileAdd.style.display === 'inline-block' ? 'none' : 'inline-block';" style="display: block;">Add document</button>
 
-  <form name="fileAdd">
-    <label for="filename">Type file name:</label>
-    <input type="text" name="filename" id="filename-text-field" />
-  
-    <button type="submit">Create</button>
-  </form>
+      <form name="fileAdd">
+        <label for="filename">Type file name:</label>
+        <input type="text" name="filename" id="filename-text-field" />
+      
+        <button type="submit">Create</button>
+      </form>
 
-  <p>Document list:<br />
-    <ul id="file-list"></ul>
-  </p>
+      <p>Document list:<br />
+        <ul id="file-list"></ul>
+      </p>
 
-  <div id="editor" ondrop="drop(event)" ondragover="allowDrop(event)">
-    Drag here for open your file.
+
+      <p>studyroom 2021</p>
+    </div>
+
+    <div id="editor" ondrop="drop(event)" ondragover="allowDrop(event)">
+      Drag here for open your file.
+    </div>
   </div>
-
-  <p>studyroom 2021</p>
-
+  
   <script src="src/js/main.js"></script>
   <script src="src/js/editor.js"></script>
   <script src="src/js/events.js"></script>

@@ -1,19 +1,20 @@
 let fileList = document.querySelector("#file-list"),
-        fileElements,
-        files = [{
-                  "id": "document-recipe_for_dinner-0",
-                  "filename": "recipe for dinner",
-                  "content": "tenderloin steak, vinegar, shoyu, bean, egg, carrot.",
-                  "createdAt": "2021-02-01T11:53:41.975Z",
-                  "lastSave": null
-                },
-                {
-                  "id": "document-my_new_files-1",
-                  "filename": "my new files",
-                  "content": "hello world!",
-                  "createdAt": "2021-02-01T11:55:57.674Z",
-                  "lastSave": null
-                }];
+    fileElements,
+    openedFile,
+    files = [{
+              "id": "document-recipe_for_dinner-0",
+              "filename": "recipe for dinner",
+              "content": "tenderloin steak, vinegar, shoyu, bean, egg, carrot.",
+              "createdAt": new Date("2021-02-01T11:53:41.975Z"),
+              "lastSave": null
+            },
+            {
+              "id": "document-my_new_files-1",
+              "filename": "my new files",
+              "content": "hello world!",
+              "createdAt": new Date("2021-02-01T11:55:57.674Z"),
+              "lastSave": null
+            }];
 
 let editor = document.querySelector("#editor");
 
