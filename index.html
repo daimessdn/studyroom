@@ -6,7 +6,7 @@
   <title>studyroom</title>
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;600&display=swap" rel="stylesheet">
 
   <link href="src/css/main.css" rel="stylesheet"> 
 </head>
@@ -25,13 +25,15 @@
       <p>Document list:<br />
         <ul id="file-list"></ul>
       </p>
-
-
+      
       <p>studyroom 2021</p>
     </div>
 
-    <div id="editor" ondrop="drop(event)" ondragover="allowDrop(event)">
-      Drag here for open your file.
+    <div id="editor"
+          spellcheck="true"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)">
+      Double-click the file of drag the file here for open your file.
     </div>
   </div>
 

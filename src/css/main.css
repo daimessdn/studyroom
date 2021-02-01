@@ -3,7 +3,7 @@ html, * {
 }
 
 html, body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Karla", sans-serif;
   margin: 0; padding: 0;
   height: 100%;
 }
@@ -17,18 +17,15 @@ html, body {
   background-color: #254E70;
   color: #fff;
   padding: 20px;
-  flex-basis: 40%;
+  flex-basis: 35%;
 }
 
 #editor {
   padding: 20px;
   border: 1px solid #000;
-  flex-basis: 60%;
+  flex-basis: 65%;
 }
 
-#editor * {
-  margin-top: 0;
-}
 
 form[name='fileAdd'] {
   display: none;
@@ -60,8 +57,37 @@ form[name='fileAdd'] {
   color: #fff;
 }
 
-b {
-  cursor: pointer;
-  float: right;
+#editor * {
+  margin-top: 0;
 }
 
+
+#editor-file-title, #editor-file-toolbar {
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 50px;
+  border: 1px solid #000;
+  background-color: #fff;
+  color: #000;
+  transition: all .3s ease;
+}
+
+#editor-file-title:hover, #editor-file-toolbar:hover {
+  background-color: #37718E;
+  color: #fff;
+}
+
+#editor-file-title:focus {
+  border: 5px solid #37718E;
+  background-color: #fff;
+  color: #000;
+}
+
+#editor-file-title {
+  font-weight: bold;
+  display: inline-block;
+}
+
+#editor-file-content {
+  margin-top: 20px;
+}

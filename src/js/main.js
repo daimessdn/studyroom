@@ -4,7 +4,7 @@ let fileList = document.querySelector("#file-list"),
     files = [{
               "id": "document-recipe_for_dinner-0",
               "filename": "Recipe for dinner",
-              "content": "tenderloin steak, vinegar, shoyu, bean, egg, carrot.",
+              "content": "<ul><li>tenderloin steak</li><li>vinegar</li><li>shoyu</li><li>bean</li><li>egg</li><li>carrot</li>",
               "createdAt": new Date("2021-02-01T11:53:41.975Z"),
               "lastSave": null
             },
@@ -19,7 +19,7 @@ let fileList = document.querySelector("#file-list"),
               "id": "document-weekly_report-1",
               "filename": "Weekly report",
               "content": "<h1>Weekly report</h1><p>Done some improvements in editing features, need to repair some bugs on interface.</p>",
-              "createdAt": new Date("2021-02-01T3:55:57.674Z"),
+              "createdAt": new Date("2021-02-01T13:55:57.674Z"),
               "lastSave": null
             }];
 
@@ -34,6 +34,8 @@ const addFile = (filename) => {
       createdAt: new Date(),
       lastSave: null
     });
+
+    openDocumentInEditor(files[files.length - 1].filename);
   }
 
   getDocuments(files);
@@ -55,7 +57,7 @@ const getDocuments = (files) => {
   let loadedDate = new Date();
 
   if (files.length > 0) {
-    files.reverse().forEach(file => {
+    files.forEach(file => {
       fileList.innerHTML += `
       <li draggable="true"
           ondragstart="drag(event)"
@@ -63,7 +65,6 @@ const getDocuments = (files) => {
           id="${file.id}">
         <span class="files-filename">${file.filename}</span> <br />
         <span class="files-datecreated">Created ${getFileHistory(loadedDate, file.createdAt)}</span>
-        <b onclick="deleteDocuments(this.parentElement);">x</b>
       </li>`;
       
       // console.log(new Date().getTime() - file.createdAt.getTime());
