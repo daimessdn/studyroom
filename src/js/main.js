@@ -3,16 +3,23 @@ let fileList = document.querySelector("#file-list"),
     openedFile,
     files = [{
               "id": "document-recipe_for_dinner-0",
-              "filename": "recipe for dinner",
+              "filename": "Recipe for dinner",
               "content": "tenderloin steak, vinegar, shoyu, bean, egg, carrot.",
               "createdAt": new Date("2021-02-01T11:53:41.975Z"),
               "lastSave": null
             },
             {
-              "id": "document-my_new_files-1",
-              "filename": "my new files",
+              "id": "document-my_new_file-1",
+              "filename": "My new file",
               "content": "hello world!",
               "createdAt": new Date("2021-02-01T11:55:57.674Z"),
+              "lastSave": null
+            },
+            {
+              "id": "document-weekly_report-1",
+              "filename": "Weekly report",
+              "content": "<h1>Weekly report</h1><p>Done some improvements in editing features, need to repair some bugs on interface.</p>",
+              "createdAt": new Date("2021-02-01T3:55:57.674Z"),
               "lastSave": null
             }];
 
@@ -21,9 +28,9 @@ let editor = document.querySelector("#editor");
 const addFile = (filename) => {
   if (filename != "") {
     files.push({
-      id: `document-${filename.split(" ").join("_")}-${files.length}`,
+      id: `document-${filename.split(" ").join("_").toLowerCase()}-${files.length}`,
       filename: filename,
-      content: null,
+      content: "<p>Here's your new file. You can type, edit, clear, and use some tools for improve your document here.</p>",
       createdAt: new Date(),
       lastSave: null
     });
@@ -95,5 +102,5 @@ function drag(ev) {
 function drop(ev) {
   ev.preventDefault();
   var data = ev.dataTransfer.getData("text");
-  ev.target.appendChild(document.getElementById(data).cloneNode(true));
+  openDocumentInEditor(document.getElementById(data).children[0].innerHTML);
 }

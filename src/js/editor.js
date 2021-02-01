@@ -14,4 +14,7 @@ const saveDocument = (filename) => {
   })[0];
 
   files[files.indexOf(fileToBeSaved)].content = editor.innerHTML;
+  files[files.indexOf(fileToBeSaved)].lastSave = new Date();
+
+  openedFile = files[files.indexOf(fileToBeSaved)];
 }
