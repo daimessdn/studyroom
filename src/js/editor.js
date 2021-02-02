@@ -21,26 +21,29 @@ const openDocumentInEditor = (filename) => {
   })[0];
 
   editor.innerHTML = `
-    <h2 id="editor-file-title"
-         contenteditable="true">
-      ${openedFile.filename}
-    </h2>
+    <div id="editor-file-topbar">
+      <h2 id="editor-file-title"
+           contenteditable="true">${openedFile.filename}</h2>
 
-    <div id="editor-file-toolbar">
-      <ul class="toolbar-section" id="semantic-toolbar">
-        <li><b>H1</b></li>
-        <li><b>H2</b></li>
-        <li><b>H3</b></li>
-        <li><b>H4</b></li>
-        <li><b>H5</b></li>
-        <li><b>H6</b></li>
-      </ul>
+      <div id="editor-file-toolbar">
+        <ul class="toolbar-section" id="semantic-toolbar">
+          <li><b>H<sub>1</sub></b></li>
+          <li><b>H<sub>2</sub></b></li>
+          <li><b>H<sub>3</sub></b></li>
+          <li><b>H<sub>4</sub></b></li>
+          <li><b>H<sub>5</sub></b></li>
+          <li><b>H<sub>6</sub></b></li>
+        </ul>
 
-      <ul class="toolbar-section" id="formatting-toolbar">
-        <li><i class="fa fas fa-bold"></i></li>
-        <li><i class="fa fas fa-italic"></i></li>
-        <li><i class="fa fas fa-underline"></i></li>
-      </ul>
+        <ul class="toolbar-section" id="formatting-toolbar">
+          <li><i class="fa fas fa-bold"></i></li>
+          <li><i class="fa fas fa-italic"></i></li>
+          <li><i class="fa fas fa-underline"></i></li>
+
+          <li><i class="fa fas fa-list"></i></li>
+          <li><i class="fa fas fa-list-ol"></i></li>
+        </ul>
+      </div>
     </div>
 
     <div id="editor-file-content" contenteditable="true">
