@@ -22,5 +22,13 @@
   width: 400px;
   padding: 10px;
 
+  position: relative;
+
   animation: zoom-in .5s;
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
 }

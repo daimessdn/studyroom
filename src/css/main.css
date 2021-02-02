@@ -26,7 +26,7 @@ html, body {
   resize: horizontal;
   overflow: auto;
 
-  box-shadow: 5px 0 10px #222;
+  box-shadow: 3px 0 5px 5px #222;
 }
 
 #add-document {
@@ -40,7 +40,7 @@ html, body {
 }
 
 #editor {
-  padding: 10px;
+  padding: 10px 10px 10px 30px;
 
   min-width: 60%;
   min-width: 70%;
@@ -57,6 +57,7 @@ form[name='fileAdd'] {
 
 .form-field-section * {
   margin: 3px;
+  width: 100%;
 }
 
 .sidebar-title {
@@ -88,6 +89,15 @@ form[name='fileAdd'] {
   color: #fff;
 }
 
+.files-filename {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.files-datecreated {
+  font-size: 12px;
+}
+
 .opened {
   border: 20px solid #23a126;
 }
@@ -109,20 +119,20 @@ form[name='fileAdd'] {
 }
 
 .welcome-image {
-  width: 150px;
+  width: 100px;
 }
 
 #editor-file-title, #editor-file-toolbar {
-  margin: 0 0 5px 0;
-  padding: 10px;
-  border-radius: 10px;
-  border: 2px solid #000;
-  background-color: #fff;
-  color: #000;
-  transition: all .3s ease;
+  margin: 0 0 7px 0;
+  /*padding: 10px;*/
+  /*border-radius: 10px;*/
+  /*border: 2px solid #000;*/
+  /*background-color: #fff;*/
+  /*color: #000;*/
+  /*transition: all .3s ease;*/
 }
 
-#editor-file-title:hover, #editor-file-toolbar:hover {
+/*#editor-file-title:hover, #editor-file-toolbar:hover {
   background-color: #007bff;
   color: #fff;
 }
@@ -131,15 +141,52 @@ form[name='fileAdd'] {
   border: 2px solid #007bff;
   background-color: #fff;
   color: #000;
-}
+}*/
 
 #editor-file-title {
+  position: relative;
+  font-size: 20px;
   font-weight: bold;
   display: inline-block;
 }
 
+#editor-file-title::after {
+  content: "";
+  border-bottom: 2px solid #000;
+  width: 0;
+  height: 2px;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+
+  transition: width .3s ease;
+}
+
+#editor-file-title:focus:after {
+  width: 100%;
+}
+
 #editor-file-toolbar {
   width: 100%;
+
+  height: 20px;
+}
+
+.toolbar-section {
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+}
+
+.toolbar-section li {
+  float: left;
+  padding: 4px;
+  margin: 0 2.5px 0 0;
+
+  border: 1px solid #000;
+  border-radius: 4px;
+
+  cursor: pointer;
 }
 
 #editor-file-content {
@@ -147,4 +194,6 @@ form[name='fileAdd'] {
   width: 100%;
 
   word-wrap: break-word;
+
+  clear: both;
 }

@@ -10,7 +10,14 @@ const openDocumentInEditor = (filename) => {
     </div>
 
     <div id="editor-file-toolbar">
-      toolbar will be shown here
+      <ul class="toolbar-section" id="semantic-toolbar">
+        <li>H1</li>
+        <li>H2</li>
+        <li>H3</li>
+        <li>H4</li>
+        <li>H5</li>
+        <li>H6</li>
+      </ul>
     </div>
 
     <div id="editor-file-content" contenteditable="true">
@@ -29,13 +36,13 @@ const openDocumentInEditor = (filename) => {
   );
 
   if (openedFileElement) {
-    openedFileElement.style.border = "3px solid #fff";
+    openedFileElement.style.border = "2px solid #fff";
   }
 
   openedFileElement = fileElements.filter(file => {
     return file.children[0].textContent == filename;
   })[0];
-  openedFileElement.style.border = "3px solid #2F242C";
+  openedFileElement.style.border = "2px solid #2F242C";
 
   console.log(`document "${filename}" opened`);
 };
