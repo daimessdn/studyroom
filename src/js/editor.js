@@ -4,19 +4,25 @@ const openDocumentInEditor = (filename) => {
   })[0];
 
   editor.innerHTML = `
-    <div id="editor-file-title"
+    <h2 id="editor-file-title"
          contenteditable="true">
       ${openedFile.filename}
-    </div>
+    </h2>
 
     <div id="editor-file-toolbar">
       <ul class="toolbar-section" id="semantic-toolbar">
-        <li>H1</li>
-        <li>H2</li>
-        <li>H3</li>
-        <li>H4</li>
-        <li>H5</li>
-        <li>H6</li>
+        <li><b>H1</b></li>
+        <li><b>H2</b></li>
+        <li><b>H3</b></li>
+        <li><b>H4</b></li>
+        <li><b>H5</b></li>
+        <li><b>H6</b></li>
+      </ul>
+
+      <ul class="toolbar-section" id="formatting-toolbar">
+        <li><i class="fa fas fa-bold"></i></li>
+        <li><i class="fa fas fa-italic"></i></li>
+        <li><i class="fa fas fa-underline"></i></li>
       </ul>
     </div>
 
@@ -52,7 +58,7 @@ const saveDocument = (filename) => {
     return file == filename;
   })[0];
 
-  files[files.indexOf(fileToBeSaved)].content = editor.innerHTML;
+  files[files.indexOf(fileToBeSaved)].content = editor.children[2].innerHTML;
   files[files.indexOf(fileToBeSaved)].lastSave = new Date();
 
   openedFile = files[files.indexOf(fileToBeSaved)];
@@ -64,7 +70,7 @@ const renameTitleInEditor = (filename, newFilename) => {
   })[0];
 
   if (newFilename !== "") {
-    files[files.indexOf(fileToBeRenamed)].filename = newFilename;
+    files[files.indexOf(fileToBeRenamed)].filename = newFilename.replaceAll("\n", "");
   } else {
     files[files.indexOf(fileToBeRenamed)].filename = "Untitled document";
     editorTitle.textContent = "Untitled document";

@@ -32,12 +32,12 @@ let editor = document.querySelector("#editor"),
     editorToolbar,
     editorContent;
 
-const addFile = (filename) => {
+const addFile = (filename, content = "<p>Here's your new file. You can type, edit, clear, and use some tools for improve your document here.</p>") => {
   if (filename != "") {
     files.push({
-      id: `document-${filename.split(" ").join("_").toLowerCase()}-${files.length}`,
+      id: `document-${filename.replace(new RegExp(" ", "g"), "_").toLowerCase()}-${files.length}`,
       filename: filename,
-      content: "<p>Here's your new file. You can type, edit, clear, and use some tools for improve your document here.</p>",
+      content: content,
       createdAt: new Date(),
       lastSave: null
     });

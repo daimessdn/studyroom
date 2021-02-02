@@ -19,3 +19,30 @@ document.addEventListener("keydown", (event) => {
   }
 }, false);
 
+if (window.FileList && window.File) {
+  editor.addEventListener("dragover", event => {
+    event.stopPropagation();
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'copy';
+  });
+
+  editor.addEventListener('drop', event => {
+    console.log(window.File);
+    event.stopPropagation();
+    event.preventDefault();
+
+    const fileMetadata = event.dataTransfer.files[0];
+
+    const reader = new FileReader();
+    reader.addEventListener("load", (event) => {
+      if (fileMetadata.type == "text/markdown") {
+        mdToHtmlContent = new showdown.Converter().makeHtml(event.target.result);
+        addFile(fileMetadata.name, mdToHtmlContent);
+      } else {
+        addFile(fileMetadata.name, event.target.result);
+      }
+    })
+
+    reader.readAsText(event.dataTransfer.files[0]);
+  }); 
+}
