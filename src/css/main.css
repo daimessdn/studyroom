@@ -221,3 +221,13 @@ form[name='fileAdd'] {
 
   clear: both;
 }
+
+#editor-file-content p,
+#editor-file-content ul li,
+#editor-file-content ol li {
+  line-height: 1.5;
+}
+
+/*#editor-file-content ul {
+  padding: 0; margin: 10px;
+}*/

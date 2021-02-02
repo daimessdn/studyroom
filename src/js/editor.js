@@ -1,3 +1,20 @@
+let welcomeSession = `
+  <div class="welcome">
+    <img class="welcome-image" src="src/img/studyroom-welcome-image.svg" />
+    <h1 class="welcome-title">Welcome to <strong>studyroom</strong></h1>
+
+    <div class="welcome-content">
+      <p>
+        <strong>Double-click</strong> the file of <strong>drag and drop</strong> the file here for open your file.
+      </p>
+
+      <p>
+        You can also create a document by <strong>drag your file (<code>.txt</code> or <code>.md</code> file)</strong> from outside window.<br />
+        It will create a document with exact name and content based on your file.
+      </p>
+    </div>
+  </div>`;
+
 const openDocumentInEditor = (filename) => {
   openedFile = files.filter(file => {
     return file.filename == filename;
