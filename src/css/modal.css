@@ -27,6 +27,17 @@
   animation: zoom-in .5s;
 }
 
+form[name='fileAdd'] {
+  line-height: 1.5;
+  padding: 5px;
+  margin: 5px;
+}
+
+.form-field-section * {
+  margin: 3px;
+  width: 100%;
+}
+
 .close {
   position: absolute;
   top: 12px;
