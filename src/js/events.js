@@ -46,3 +46,18 @@ if (window.FileList && window.File) {
     reader.readAsText(event.dataTransfer.files[0]);
   }); 
 }
+
+fileSearch.addEventListener("input", (event) => {
+  fileList.innerHTML = "";
+
+  fileElements.forEach(fileElement => {
+    // console.log(fileElement.children[0].textContent);
+    if (fileElement.children[0].textContent.includes(fileSearch.value)) {
+      fileList.appendChild(fileElement);
+    }
+  });
+
+  if (fileList.innerHTML == "") {
+    fileList.innerHTML = "File not found";
+  }
+});

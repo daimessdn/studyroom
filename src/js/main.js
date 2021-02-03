@@ -1,4 +1,5 @@
 let fileList = document.querySelector("#file-list"),
+    fileSearch = document.querySelector("#file-search"),
     fileElements,
     openedFile,
     openedFileElement;
@@ -33,10 +34,14 @@ let editor = document.querySelector("#editor"),
     editorContent;
 
 const addFile = (filename, content = "<p>Here's your new file. You can type, edit, clear, and use some tools for improve your document here.</p>") => {
+  const existingFilenames = files.filter(file => {
+    return file.filename.includes(filename);
+  });
+
   if (filename != "") {
     files.push({
       id: `document-${filename.replace(new RegExp(" ", "g"), "_").toLowerCase()}-${files.length}`,
-      filename: filename,
+      filename: existingFilenames.length == 0 ? filename : `Copy ${existingFilenames.length} of ${filename}`,
       content: content,
       createdAt: new Date(),
       lastSave: null
@@ -49,9 +54,23 @@ const addFile = (filename, content = "<p>Here's your new file. You can type, edi
 };
 
 const deleteDocuments = (element) => {
-  console.log(JSON.stringify(element.textContent));
+  // console.log(element, element.textContent);
+  fileToBeDeleted = files.filter(file => {
+    // console.log(file.filename, file.filename != element.textContent);
+    return (file.filename) == element.textContent;
+  });
+
+  if (openedFile) {
+    if (openedFile.filename == element.textContent) {
+      editor.innerHTML = welcomeSession;
+    }
+
+    openedFile = null;
+  }
+
   files = files.filter(file => {
-    return (file.filename + " x") != `${element.textContent}`;
+    // console.log(file.filename, file.filename != element.textContent);
+    return (file.filename) != element.textContent;
   });
 
   getDocuments(files);
@@ -68,15 +87,21 @@ const getDocuments = (files) => {
       <li draggable="true"
           ondragstart="drag(event)"
           ondblclick="openDocumentInEditor('${file.filename}')"
-          id="${file.id}">
+          id="${file.id}"
+          title="${file.filename}.\nDouble-click or drag to editor to open the file.">
         <span class="files-filename">${file.filename}</span> <br />
         <span class="files-datecreated">Created ${getFileHistory(loadedDate, file.createdAt)}</span>
+        <div class="files-action">
+          <button onclick="deleteDocuments(this.parentElement.previousElementSibling.previousElementSibling.previousElementSibling)" class="delete-file-button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+        </div>
       </li>`;
       
       // console.log(new Date().getTime() - file.createdAt.getTime());
     });
   } else {
-    fileList.innerHTML = "There's nothing here. Create a new one.";
+    fileList.innerHTML = `
+      There's nothing here. Create a new one.<br />
+      <button id="new-file-button" onclick="document.querySelector('#new-document-modal').style.display = 'flex';"><i class="fa fa-plus"></i> New file</button>`;
   }
 
   fileElements = Array.prototype.slice.call(fileList.children);
@@ -93,7 +118,7 @@ const getFileHistory = (currentDate, recentDate) => {
     return Math.round(differences / 36e5) == 1 ? `a hour ago` : `${Math.round(differences / 36e5)} hours ago`;
   } else if (differences >= 864e5 && differences < 6.048e+8) {
     return Math.round(differences / 864e5) == 1 ? `a day ago` : `${Math.round(differences / 864e5)} days ago`;
-  } else {
+  } else if (differences <= 1e3){
     return "just now";
   }
 };

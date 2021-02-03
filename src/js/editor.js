@@ -1,6 +1,6 @@
 let welcomeSession = `
   <div class="welcome">
-    <img class="welcome-image" src="src/img/studyroom-welcome-image.svg" />
+    <img class="welcome-image" src="src/img/studyroom-welcome-image.svg" draggable="false"/>
     <h1 class="welcome-title">Welcome to <strong>studyroom</strong></h1>
 
     <div class="welcome-content">
@@ -23,7 +23,8 @@ const openDocumentInEditor = (filename) => {
   editor.innerHTML = `
     <div id="editor-file-topbar">
       <h2 id="editor-file-title"
-           contenteditable="true">${openedFile.filename}</h2>
+           contenteditable="true"
+           title="${openedFile.filename}. Click to rename.">${openedFile.filename}</h2>
 
       <div id="editor-file-toolbar">
         <ul class="toolbar-section" id="semantic-toolbar">
@@ -62,15 +63,21 @@ const openDocumentInEditor = (filename) => {
   );
 
   if (openedFileElement) {
-    openedFileElement.style.border = "2px solid #fff";
+    openedFileElement.style.border = "1px solid #fff";
   }
 
   openedFileElement = fileElements.filter(file => {
     return file.children[0].textContent == filename;
   })[0];
-  openedFileElement.style.border = "2px solid #2F242C";
+  openedFileElement.style.border = "5px solid #2F242C";
 
   console.log(`document "${filename}" opened`);
+
+  fileSearch.value = "";
+
+  editorContent.onselectionchange =  () => {
+    console.log(document.getSelection().focusOffset);
+  };
 };
 
 const saveDocument = (filename) => {
