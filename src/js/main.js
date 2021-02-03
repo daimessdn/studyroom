@@ -38,6 +38,8 @@ const deleteDocuments = (element) => {
     return (file.filename) == element.textContent;
   })[0];
 
+  console.log(fileToBeDeleted);
+
   showNotificationStatus("success", `Successfully deleted <strong>${fileToBeDeleted.filename}</strong>.`)
   
   if (openedFile) {
@@ -81,12 +83,12 @@ const getDocuments = (files) => {
           ondblclick="openDocumentInEditor('${file.filename}')"
           id="${file.id}"
           title="${file.filename}.\nDouble-click or drag to editor to open the file.">
-        <span class="files-filename">${file.filename}</span> <br />
+        <div class="files-filename">${file.filename}</div>
         <span class="files-datecreated">Created ${getFileHistory(loadedDate, file.createdAt)}</span>
         <div class="files-action">
-          <button onclick="duplicateDocument(this.parentElement.previousElementSibling.previousElementSibling.previousElementSibling)" class="duplicate-file-button"><i class="fa fa-copy" aria-hidden="true"></i> Duplicate
+          <button onclick="duplicateDocument(this.parentElement.previousElementSibling.previousElementSibling)" class="duplicate-file-button"><i class="fa fa-copy" aria-hidden="true"></i> Duplicate
           </button>
-          <button onclick="deleteDocuments(this.parentElement.previousElementSibling.previousElementSibling.previousElementSibling)" class="delete-file-button"><i class="fa fa-trash" aria-hidden="true"></i> Delete
+          <button onclick="deleteDocuments(this.parentElement.previousElementSibling.previousElementSibling)" class="delete-file-button"><i class="fa fa-trash" aria-hidden="true"></i> Delete
           </button>
         </div>
       </li>`;
@@ -149,7 +151,6 @@ const showNotificationStatus = (status, message) => {
   let notificationBar = document.querySelector("#notification-trigger");
 
   notificationBar.innerHTML = message;
-
   notificationBar.style.display = "block";
 
   setTimeout(() => { notificationBar.style.display = "none" }, 5000);

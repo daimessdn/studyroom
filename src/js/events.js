@@ -65,16 +65,31 @@ if (window.FileList && window.File) {
 }
 
 fileSearch.addEventListener("input", (event) => {
-  fileList.innerHTML = "";
+  fileList.style.justifyContent = "flex-start";
+  fileList.style.alignItems = "flex-start";
+  fileList.style.textAlign = "left";
 
-  fileElements.forEach(fileElement => {
+  queryResults = files.filter(files => {
     // console.log(fileElement.children[0].textContent);
-    if (fileElement.children[0].textContent.includes(fileSearch.value)) {
-      fileList.appendChild(fileElement);
-    }
+    return file.filename.includes(fileSearch.value);
   });
 
-  if (fileList.innerHTML == "") {
-    fileList.innerHTML = "File not found";
+  if (queryResults.length === 0) {
+    if (fileSearch.value === "") {
+      getDocuments(queryResults);
+    } else {
+      fileList.innerHTML = `
+        <p class="no-file-search-message">
+          <img src="src/img/file-not-found.svg" /><br />
+          Search not found.
+        </p>
+      `;
+
+      fileList.style.justifyContent = "center";
+      fileList.style.alignItems = "center";
+      fileList.style.textAlign = "center";
+    }
+  } else {
+    getDocuments(queryResults);
   }
 });

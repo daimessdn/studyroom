@@ -22,7 +22,7 @@ const openDocumentInEditor = (filename) => {
 
   editor.innerHTML = `
     <div id="editor-file-topbar">
-      <i class="fas fa-pencil-alt" style="margin-right: 3px;"></i> <h2 id="editor-file-title"
+      <h2 id="editor-file-title"
            contenteditable="true"
            title="${openedFile.filename}. Click to rename.">${openedFile.filename}</h2>
 

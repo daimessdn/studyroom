@@ -87,7 +87,8 @@ input, button {
   top: 0px;
 }
 
-.no-file-message {
+.no-file-message,
+.no-file-search-message {
   line-height: 1.5;
 }
 
@@ -113,12 +114,14 @@ input, button {
 #file-list {
   list-style: none;
   width: 100%;
-  padding: 0;
+  padding: 0 0 50px 0;
   margin: 0 0 0 0;
 
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+
+  animation: file-created .3s ease forwards;
 }
 
 #file-list li {
@@ -188,6 +191,13 @@ input, button {
 .files-filename {
   font-weight: bold;
   font-size: 16px;
+
+  max-width: 100%;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
 }
 
 .files-datecreated {
@@ -215,9 +225,15 @@ input, button {
   color: #007bff;
   border: 1px solid #007bff;
 
-  font-size: 16px;
+  max-width: 250px;
+
+  font-size: 13px;
 
   display: none;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 
   animation: notification-in .5s ease;
 }
@@ -226,6 +242,14 @@ input, button {
   from {
     opacity: 0;
   } to {
-    opacity: `;
+    opacity: 1;
+  }
+}
+
+@keyframes file-created {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
   }
 }

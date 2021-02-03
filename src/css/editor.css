@@ -57,16 +57,21 @@
   position: relative;
   font-weight: bold;
   display: inline-block;
-  margin: 30px 0 10px 0;
+  margin: 5px 0 10px 0;
+  max-width: 300px;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 #editor-file-title::after {
   content: "";
-  border-bottom: 1px solid #fff;
+  border-bottom: 2px solid #fff;
   width: 0;
   height: 1px;
   position: absolute;
-  bottom: -1.5px;
+  bottom: 0;
   left: 0;
 
   transition: width .3s ease;
