@@ -7,6 +7,7 @@ html, body {
   font-family: "Roboto", sans-serif;
   margin: 0; padding: 0;
   height: 100%;
+  scrollbar-width: none;
 }
 
 input, button {
@@ -31,7 +32,11 @@ input, button {
 
   overflow: auto;
 
+  display: flex;
+  flex-direction: column;
+
   /*box-shadow: 3px 0 5px 5px #222;*/
+  scrollbar-width: none;
 }
 
 #editor {
@@ -82,10 +87,14 @@ input, button {
   top: 0px;
 }
 
+.no-file-message {
+  line-height: 1.5;
+}
+
 #file-search {
   width: 100%;
   padding: 5px;
-  margin: 11px 0 5px 0;
+  margin: 11px 0 0 0;
 
   border: none;
   border-radius: 10px;
@@ -105,12 +114,17 @@ input, button {
   list-style: none;
   width: 100%;
   padding: 0;
-  margin: 5px 0 0 0;
+  margin: 0 0 0 0;
+
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 #file-list li {
   border-radius: 10px;
   background-color: #fff;
+  width: 100%;
   color: #000;
   padding: 5px;
   margin: 7px 0;
@@ -153,21 +167,22 @@ input, button {
   border: 1px solid #222;
   background-color: #c33c23;
   color: #fff;
-  box-shadow: 0 6px 0 0 #dc453d, 0 8px 0 0px #c33c23;
+  box-shadow: 0 6px 0 0 #dc453d, 0 8px 0 0px #222;
 }
 
 .duplicate-file-button {
   border: 1px solid #222;
   background-color: #3f69aa;
   color: #fff;
-  box-shadow: 0 6px 0 0 #3f69aa, 0 8px 0 0px #3f69aa;
+  box-shadow: 0 6px 0 0 #3f69aa, 0 8px 0 0px #222;
 }
 
 #new-file-button {
   border: 1px solid #3f69aa;
   background-color: #3f69aa;
   color: #fff;
-  box-shadow: 0 6px 0 0 #3f69aa, 0 8px 0 0px #3f69aa;
+  box-shadow: 0 6px 0 0 #3f69aa, 0 8px 0 0px #222;
+  width: 100px;
 }
 
 .files-filename {
@@ -193,7 +208,17 @@ input, button {
   right: 10px;
   top: 10px;
 
-  font-weight: bold;
+  padding: 5px;
+  border-radius: 10px;
+
+  background-color: #fff;
+  color: #007bff;
+  border: 1px solid #007bff;
+
+  font-size: 16px;
+
+  display: none;
+
   animation: notification-in .5s ease;
 }
 

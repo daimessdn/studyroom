@@ -96,12 +96,14 @@ const saveDocument = (filename) => {
     return file == filename;
   })[0];
 
-  files[files.indexOf(fileToBeSaved)].content = editor.children[2].innerHTML;
+  files[files.indexOf(fileToBeSaved)].content = editorContent.innerHTML;
   files[files.indexOf(fileToBeSaved)].lastSave = new Date();
 
   localStorage.setItem("files", JSON.stringify(files));
 
   openedFile = files[files.indexOf(fileToBeSaved)];
+
+  showNotificationStatus("success", `Saved changes for <strong>${fileToBeSaved.filename}</strong>`);
 }
 
 const renameTitleInEditor = (filename, newFilename) => {

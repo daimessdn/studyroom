@@ -59,6 +59,8 @@ if (window.FileList && window.File) {
     })
 
     reader.readAsText(event.dataTransfer.files[0]);
+
+    showNotificationStatus("success", `Successfully created a document from <strong>${fileMetadata.name}</strong>.`)
   }); 
 }
 

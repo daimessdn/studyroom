@@ -36,8 +36,10 @@ const addFile = (filename, content = "<p>Here's your new file. You can type, edi
 const deleteDocuments = (element) => {
   fileToBeDeleted = files.filter(file => {
     return (file.filename) == element.textContent;
-  });
+  })[0];
 
+  showNotificationStatus("success", `Successfully deleted <strong>${fileToBeDeleted.filename}</strong>.`)
+  
   if (openedFile) {
     if (openedFile.filename == element.textContent) {
       editor.innerHTML = welcomeSession;
@@ -62,6 +64,8 @@ const duplicateDocument = (element) => {
   })[0];
 
   addFile(fileToBeDuplicated.filename, fileToBeDuplicated.content);
+
+  showNotificationStatus("success", `Successfully duplicated <strong>${fileToBeDuplicated.filename}</strong>.`)
 };
 
 const getDocuments = (files) => {
@@ -86,13 +90,26 @@ const getDocuments = (files) => {
           </button>
         </div>
       </li>`;
+
+      fileList.style.justifyContent = "flex-start";
+      fileList.style.alignItems = "flex-start";
+      fileList.style.textAlign = "left";
       
       // console.log(new Date().getTime() - file.createdAt.getTime());
     });
   } else {
     fileList.innerHTML = `
-      There's nothing here. Create a new one.<br />
-      <button id="new-file-button" onclick="document.querySelector('#new-document-modal').style.display = 'flex';"><i class="fa fa-plus"></i> New file</button>`;
+      <p class="no-file-message">
+        <img src="src/img/file-not-found.svg" /><br />
+        There's nothing here.<br />Create a new one.<br />
+        <button id="new-file-button" onclick="document.querySelector('#new-document-modal').style.display = 'flex';">
+          <i class="fa fa-plus"></i> New file
+        </button>
+      </p>`;
+
+    fileList.style.justifyContent = "center";
+    fileList.style.alignItems = "center";
+    fileList.style.textAlign = "center";
   }
 
   fileElements = Array.prototype.slice.call(fileList.children);
@@ -126,4 +143,14 @@ function drop(ev) {
   ev.preventDefault();
   var data = ev.dataTransfer.getData("text");
   openDocumentInEditor(document.getElementById(data).children[0].innerHTML);
+}
+
+const showNotificationStatus = (status, message) => {
+  let notificationBar = document.querySelector("#notification-trigger");
+
+  notificationBar.innerHTML = message;
+
+  notificationBar.style.display = "block";
+
+  setTimeout(() => { notificationBar.style.display = "none" }, 5000);
 }
