@@ -8,7 +8,7 @@
   position: fixed;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  z-index: 100;
   left: 0;
   top: 0;
   width: 100%;
@@ -18,7 +18,9 @@
 }
 
 .modal-window {
-  background-color: #fff;
+  background-color: #007bff;
+  color: #fff;
+
   width: 400px;
   padding: 10px;
 
@@ -38,8 +40,35 @@ form[name='fileAdd'] {
   width: 100%;
 }
 
+.form-field-section input,
+.form-field-section button {
+  border: 1px solid #222;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #fff;
+  color: #000;
+  font-size: 14px;
+  margin: 3px 0;
+}
+
+.form-field-section button {
+  margin: 3px 0 7px 0;
+  position: relative;
+  top: 0;
+  box-shadow: 0 6px 0 0 #eee, 0 8px 0 0 #222;
+
+  transition: all .3s ease;
+
+  cursor: pointer;
+}
+
+.form-field-section button:active {
+  top: 8px;
+  box-shadow: none;
+}
+
 .close {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 11px;
+  right: 11px;
 }

@@ -21,7 +21,7 @@ input, button {
 #sidebar {
   background-color: #007bff;
   color: #fff;
-  padding: 10px;
+  padding: 0 10px 10px 10px;
 
   width: 30%;
 
@@ -41,14 +41,16 @@ input, button {
 }
 
 #add-document {
+  z-index: 20;
+
   font-size: 16px;
   position: absolute;
-  top: 10px;
+  top: 14px;
   right: 10px;
   background-color: #007bff;
   color: #fff;
-  border: 2px solid #fff;
-  padding: 2px;
+  border: 1px solid #fff;
+  padding: 1px;
 
   display: grid;
   place-items: center;
@@ -57,60 +59,107 @@ input, button {
   height: 30px;
 
   border-radius: 50px;
-  box-shadow: 0px 4px 0px #eeeeee;
+  box-shadow: 0px 4px 0 0 #eeeeee;
 
-  transition: all .3s ease;
+  transition: all .1s ease;
+  cursor: pointer;
 }
 
 #add-document:active {
-  top: 14px;
+  top: 20px;
   box-shadow: none;
 }
 
 .sidebar-title {
-  letter-spacing: 2px;
-  margin: 6px 0 0 0;
+  letter-spacing: 1px;
+  margin: 0;
+
+  padding: 14px 0 5px 0;
+
+  background-color: #007bff;
+  position: sticky;
+  z-index: 10;
+  top: 0px;
 }
 
 #file-search {
   width: 100%;
-  padding: 3px;
-  margin: 12px 0 5px 0;
+  padding: 5px;
+  margin: 11px 0 5px 0;
 
   border: none;
-  border-bottom: 2px solid #fff;
-  
-  background-color: initial;
-  color: #fff;
+  border-radius: 10px;
+
+  background-color: #fff;
+  color: #000;
 
   font-size: 14px;
+  font-weight: bold;
 }
 
 #file-search::placeholder {
-  color: #fff;
+  color: #000;
 }
 
 #file-list {
   list-style: none;
   width: 100%;
   padding: 0;
-  margin: 0;
-  display: inline-block;
+  margin: 5px 0 0 0;
 }
 
 #file-list li {
   border-radius: 10px;
   background-color: #fff;
   color: #000;
-  padding: 10px;
+  padding: 5px;
   margin: 7px 0;
-  border: 2px solid #fff;
+  border: 1px solid #fff;
   transition: all .3s ease;
+
+  position: relative;
 }
 
 #file-list li:hover {
   background-color: #007bff;
   color: #fff;
+}
+
+#file-list button {
+  /*border: 1px solid #007bff;*/
+  border-radius: 10px;
+  padding: 5px;
+  /*background-color: #fff;*/
+  /*color: #000;*/
+  font-weight: bold;
+
+  margin: 3px 0 7px 0;
+  position: relative;
+  top: 0;
+  /*box-shadow: 0 6px 0 0 #eee, 0 8px 0 0 #007bff;*/
+
+  transition: all .1s ease;
+  cursor: pointer;
+}
+
+#file-list button:active,
+#new-file-button button:active {
+  top: 8px;
+  box-shadow: none;
+}
+
+.delete-file-button {
+  border: 1px solid #dc453d;
+  background-color: #c33c23;
+  color: #fff;
+  box-shadow: 0 6px 0 0 #dc453d, 0 8px 0 0px #c33c23;
+}
+
+#new-file-button {
+  border: 1px solid #3f69aa;
+  background-color: #3f69aa;
+  color: #fff;
+  box-shadow: 0 6px 0 0 #3f69aa, 0 8px 0 0px #3f69aa;
 }
 
 .files-filename {
@@ -119,8 +168,13 @@ input, button {
 }
 
 .files-datecreated {
-  font-size: 12px;
+  font-size: 11px;
 }
+
+.files-action {
+  display: flex;
+  justify-content: flex-end;
+} 
 
 .opened {
   border: 20px solid #23a126;

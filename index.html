@@ -32,9 +32,10 @@
     <div id="editor"
          spellcheck="true"
          ondrop="drop(event)"
-         ondragover="allowDrop(event)">
+         ondragover="allowDrop(event)"
+         unselectable="on">
       <div class="welcome">
-        <img class="welcome-image" src="src/img/studyroom-welcome-image.svg" />
+        <img class="welcome-image" src="src/img/studyroom-welcome-image.svg" draggable="false"/>
         <h1 class="welcome-title">Welcome to <strong>studyroom</strong></h1>
 
         <div class="welcome-content">
@@ -62,7 +63,7 @@
         <div class="form-field-section">
 
           <label for="filename">Type file name:</label><br />
-          <input type="text" name="filename" id="filename-text-field" />
+          <input type="text" name="filename" id="filename-text-field" required />
         </div>
       
         <div class="form-field-section">
