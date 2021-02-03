@@ -1,1 +1,5 @@
-This is an example text
+This is an example text from basic text editor file.
+
+You can also upload another file with types of files:
+- Markdown file (`.md`)
+- HTML document (`.html`)

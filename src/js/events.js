@@ -1,5 +1,20 @@
-document.addEventListener("DOMContentLoaded",
-                          getDocuments(files));
+document.addEventListener("DOMContentLoaded",() => {
+  if (localStorage.getItem("files") === null) {
+    console.log("There is no files storage there. Creating...");
+    localStorage.setItem("files", JSON.stringify([]));
+  }
+
+  localStorage.setItem("openedFile", "");
+
+  files = JSON.parse(localStorage.getItem("files"));
+
+  files.forEach(file => {
+    file.createdAt = new Date(file.createdAt);
+    file.lastSave = new Date(file.lastSaved);
+  });
+
+  getDocuments(files);
+});
 
 document.fileAdd.addEventListener("submit", (event) => {
   event.preventDefault();

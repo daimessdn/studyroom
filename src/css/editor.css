@@ -57,7 +57,7 @@
   position: relative;
   font-weight: bold;
   display: inline-block;
-  margin: 0 0 7px 0;
+  margin: 0 0 10px 0;
 }
 
 #editor-file-title::after {
@@ -82,12 +82,19 @@
   font-size: 16px;
 
   margin-bottom: 7px;
+
+  display: inline-flex;
 }
 
 .toolbar-section {
   list-style: none;
   margin: 0;
   padding: 0;
+
+  padding: 0 6px;
+
+  border-left: 2px solid #fff;
+  border-right: 2px solid #fff;
 
   display: inline-block;
 }
@@ -126,6 +133,7 @@
 
 .toolbar-section li b { color: #fff; font-size: 14px; }
 .toolbar-section li:hover b { color: blue; }
+.subheader-number-symbol { font-size: 10px }
 
 #editor-file-content {
   padding: 10px;

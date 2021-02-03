@@ -4,29 +4,7 @@ let fileList = document.querySelector("#file-list"),
     openedFile,
     openedFileElement;
 
-let files = [
-  {
-    "id": "document-recipe_for_dinner-0",
-    "filename": "Recipe for dinner",
-    "content": "<ul><li>tenderloin steak</li><li>vinegar</li><li>shoyu</li><li>bean</li><li>egg</li><li>carrot</li>",
-    "createdAt": new Date("2021-02-01T11:53:41.975Z"),
-    "lastSave": null
-  },
-  {
-    "id": "document-my_new_file-1",
-    "filename": "My new file",
-    "content": "hello world!",
-    "createdAt": new Date("2021-02-01T11:55:57.674Z"),
-    "lastSave": null
-  },
-  {
-    "id": "document-weekly_report-1",
-    "filename": "Weekly report",
-    "content": "<h1>Weekly report</h1><p>Done some improvements in editing features, need to repair some bugs on interface.</p>",
-    "createdAt": new Date("2021-02-01T13:55:57.674Z"),
-    "lastSave": null
-  }
-];
+let files = JSON.parse(localStorage.getItem("files"));
 
 let editor = document.querySelector("#editor"),
     editorTitle,
@@ -48,32 +26,42 @@ const addFile = (filename, content = "<p>Here's your new file. You can type, edi
     });
   }
 
+  localStorage.setItem("files", JSON.stringify(files));
+
   getDocuments(files);
   document.fileAdd.filename.value = "";
   openDocumentInEditor(files[files.length - 1].filename);
 };
 
 const deleteDocuments = (element) => {
-  // console.log(element, element.textContent);
   fileToBeDeleted = files.filter(file => {
-    // console.log(file.filename, file.filename != element.textContent);
     return (file.filename) == element.textContent;
   });
 
   if (openedFile) {
     if (openedFile.filename == element.textContent) {
       editor.innerHTML = welcomeSession;
+      
+      openedFile = null;
+      localStorage.setItem("openedFile", JSON.stringify(openedFile));
     }
-
-    openedFile = null;
   }
 
   files = files.filter(file => {
-    // console.log(file.filename, file.filename != element.textContent);
     return (file.filename) != element.textContent;
   });
 
+  localStorage.setItem("files", JSON.stringify(files));
+
   getDocuments(files);
+};
+
+const duplicateDocument = (element) => {
+  fileToBeDuplicated = files.filter(file => {
+    return (file.filename) == element.textContent;
+  })[0];
+
+  addFile(fileToBeDuplicated.filename, fileToBeDuplicated.content);
 };
 
 const getDocuments = (files) => {
@@ -92,7 +80,10 @@ const getDocuments = (files) => {
         <span class="files-filename">${file.filename}</span> <br />
         <span class="files-datecreated">Created ${getFileHistory(loadedDate, file.createdAt)}</span>
         <div class="files-action">
-          <button onclick="deleteDocuments(this.parentElement.previousElementSibling.previousElementSibling.previousElementSibling)" class="delete-file-button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+          <button onclick="duplicateDocument(this.parentElement.previousElementSibling.previousElementSibling.previousElementSibling)" class="duplicate-file-button"><i class="fa fa-copy" aria-hidden="true"></i> Duplicate
+          </button>
+          <button onclick="deleteDocuments(this.parentElement.previousElementSibling.previousElementSibling.previousElementSibling)" class="delete-file-button"><i class="fa fa-trash" aria-hidden="true"></i> Delete
+          </button>
         </div>
       </li>`;
       

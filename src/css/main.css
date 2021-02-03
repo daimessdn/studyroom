@@ -133,7 +133,7 @@ input, button {
   /*color: #000;*/
   font-weight: bold;
 
-  margin: 3px 0 7px 0;
+  margin: 3px 0 7px 3px;
   position: relative;
   top: 0;
   /*box-shadow: 0 6px 0 0 #eee, 0 8px 0 0 #007bff;*/
@@ -143,16 +143,24 @@ input, button {
 }
 
 #file-list button:active,
-#new-file-button button:active {
+#new-file-button button:active,
+.duplicate-file-button button:active {
   top: 8px;
   box-shadow: none;
 }
 
 .delete-file-button {
-  border: 1px solid #dc453d;
+  border: 1px solid #222;
   background-color: #c33c23;
   color: #fff;
   box-shadow: 0 6px 0 0 #dc453d, 0 8px 0 0px #c33c23;
+}
+
+.duplicate-file-button {
+  border: 1px solid #222;
+  background-color: #3f69aa;
+  color: #fff;
+  box-shadow: 0 6px 0 0 #3f69aa, 0 8px 0 0px #3f69aa;
 }
 
 #new-file-button {
@@ -178,4 +186,21 @@ input, button {
 
 .opened {
   border: 20px solid #23a126;
+}
+
+#notification-trigger {
+  position: fixed;
+  right: 10px;
+  top: 10px;
+
+  font-weight: bold;
+  animation: notification-in .5s ease;
+}
+
+@keyframes notification-in {
+  from {
+    opacity: 0;
+  } to {
+    opacity: `;
+  }
 }

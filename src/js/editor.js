@@ -22,27 +22,36 @@ const openDocumentInEditor = (filename) => {
 
   editor.innerHTML = `
     <div id="editor-file-topbar">
-      <h2 id="editor-file-title"
+      <i class="fas fa-pencil-alt" style="margin-right: 3px;"></i> <h2 id="editor-file-title"
            contenteditable="true"
            title="${openedFile.filename}. Click to rename.">${openedFile.filename}</h2>
 
       <div id="editor-file-toolbar">
         <ul class="toolbar-section" id="semantic-toolbar">
-          <li><b>H<sub>1</sub></b></li>
-          <li><b>H<sub>2</sub></b></li>
-          <li><b>H<sub>3</sub></b></li>
-          <li><b>H<sub>4</sub></b></li>
-          <li><b>H<sub>5</sub></b></li>
-          <li><b>H<sub>6</sub></b></li>
+          <li><b>H<span class="subheader-number-symbol">1</span></b></li>
+          <li><b>H<span class="subheader-number-symbol">2</span></b></li>
+          <li><b>H<span class="subheader-number-symbol">3</span></b></li>
+          <li><b>H<span class="subheader-number-symbol">4</span></b></li>
+          <li><b>H<span class="subheader-number-symbol">5</span></b></li>
+          <li><b>H<span class="subheader-number-symbol">6</span></b></li>
         </ul>
 
         <ul class="toolbar-section" id="formatting-toolbar">
           <li><i class="fa fas fa-bold"></i></li>
           <li><i class="fa fas fa-italic"></i></li>
           <li><i class="fa fas fa-underline"></i></li>
+          <li><i class="fas fa-strikethrough"></i></li>
+
+          <li><i class="fas fa-subscript"></i></li>
+          <li><i class="fas fa-superscript"></i></li>
 
           <li><i class="fa fas fa-list"></i></li>
           <li><i class="fa fas fa-list-ol"></i></li>
+
+          <li><i class="fas fa-align-left"></i></li>
+          <li><i class="fas fa-align-center"></i></li>
+          <li><i class="fas fa-align-right"></i></li>
+          <li><i class="fas fa-align-justify"></i></li>
         </ul>
       </div>
     </div>
@@ -75,6 +84,8 @@ const openDocumentInEditor = (filename) => {
 
   fileSearch.value = "";
 
+  localStorage.setItem("openedFile", JSON.stringify(openedFile));
+
   editorContent.onselectionchange =  () => {
     console.log(document.getSelection().focusOffset);
   };
@@ -87,6 +98,8 @@ const saveDocument = (filename) => {
 
   files[files.indexOf(fileToBeSaved)].content = editor.children[2].innerHTML;
   files[files.indexOf(fileToBeSaved)].lastSave = new Date();
+
+  localStorage.setItem("files", JSON.stringify(files));
 
   openedFile = files[files.indexOf(fileToBeSaved)];
 }
@@ -104,6 +117,8 @@ const renameTitleInEditor = (filename, newFilename) => {
   }
 
   files[files.indexOf(fileToBeRenamed)].lastSave = new Date();
+
+  localStorage.setItem("files", JSON.stringify(files));
 
   getDocuments(files);
 
