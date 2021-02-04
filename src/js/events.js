@@ -31,6 +31,27 @@ document.addEventListener("keydown", (event) => {
     saveDocument(openedFile);
     
     console.log("Document saved");
+  } else if (event.key == "b" && event.ctrlKey) {
+    event.preventDefault();
+    
+    console.log(window.getSelection());
+    boldIcon();
+    
+    console.log("Text bold saved");
+  } else if (event.key == "i" && event.ctrlKey) {
+    event.preventDefault();
+    
+    console.log(window.getSelection());
+    italicIcon();
+    
+    console.log("Text italic saved");
+  } else if (event.key == "u" && event.ctrlKey) {
+    event.preventDefault();
+    
+    console.log(window.getSelection());
+    underlineIcon();
+    
+    console.log("Text underline saved");
   }
 }, false);
 
@@ -53,6 +74,12 @@ if (window.FileList && window.File) {
       if (fileMetadata.type == "text/markdown") {
         mdToHtmlContent = new showdown.Converter().makeHtml(event.target.result);
         addFile(fileMetadata.name, mdToHtmlContent);
+      } else if (fileMetadata.type == "text/plain") {
+        console.log(event.target.result)
+        processedText = event.target.result.replace(new RegExp("\n", "g"), "<br />");
+        processedText = `<p>${processedText}</p>`;
+
+        addFile(fileMetadata.name, processedText);
       } else {
         addFile(fileMetadata.name, event.target.result);
       }
@@ -69,7 +96,7 @@ fileSearch.addEventListener("input", (event) => {
   fileList.style.alignItems = "flex-start";
   fileList.style.textAlign = "left";
 
-  queryResults = files.filter(files => {
+  queryResults = files.filter(file => {
     // console.log(fileElement.children[0].textContent);
     return file.filename.includes(fileSearch.value);
   });

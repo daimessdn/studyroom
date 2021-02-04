@@ -17,14 +17,16 @@
 <body>
   <div id="main">
     <div id="sidebar">
-      <button id="add-document"
-              onclick="document.querySelector('#new-document-modal').style.display = 'flex';">
-                <i class="fa fa-plus"></i>
-      </button>
-      
-      <h2 class="sidebar-title">Documents</h2>
+      <div class="sidebar-title">
+        <button id="add-document"
+                onclick="document.querySelector('#new-document-modal').style.display = 'flex';">
+                  <i class="fa fa-plus"></i>
+        </button>
+        
+        <h2>Documents</h2>
 
-      <input id="file-search" type="text" placeholder="Search your documents here" />
+        <input id="file-search" type="text" placeholder="Search your documents here" />
+      </div>
 
       <ul id="file-list"></ul>
     </div>
@@ -81,5 +83,6 @@
   <script src="src/js/main.js"></script>
   <script src="src/js/editor.js"></script>
   <script src="src/js/events.js"></script>
+  <script src="src/js/toolbars.js"></script>
 </body>
 </html>

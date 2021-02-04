@@ -28,30 +28,30 @@ const openDocumentInEditor = (filename) => {
 
       <div id="editor-file-toolbar">
         <ul class="toolbar-section" id="semantic-toolbar">
-          <li><b>H<span class="subheader-number-symbol">1</span></b></li>
-          <li><b>H<span class="subheader-number-symbol">2</span></b></li>
-          <li><b>H<span class="subheader-number-symbol">3</span></b></li>
-          <li><b>H<span class="subheader-number-symbol">4</span></b></li>
-          <li><b>H<span class="subheader-number-symbol">5</span></b></li>
-          <li><b>H<span class="subheader-number-symbol">6</span></b></li>
+          <li class="toolbar-button" onclick="headerIcon(1)"><b>H<span class="subheader-number-symbol">1</span></b></li>
+          <li class="toolbar-button" onclick="headerIcon(2)"><b>H<span class="subheader-number-symbol">2</span></b></li>
+          <li class="toolbar-button" onclick="headerIcon(3)"><b>H<span class="subheader-number-symbol">3</span></b></li>
+          <li class="toolbar-button" onclick="headerIcon(4)"><b>H<span class="subheader-number-symbol">4</span></b></li>
+          <li class="toolbar-button" onclick="headerIcon(5)"><b>H<span class="subheader-number-symbol">5</span></b></li>
+          <li class="toolbar-button" onclick="headerIcon(6)"><b>H<span class="subheader-number-symbol">6</span></b></li>
         </ul>
 
         <ul class="toolbar-section" id="formatting-toolbar">
-          <li><i class="fa fas fa-bold"></i></li>
-          <li><i class="fa fas fa-italic"></i></li>
-          <li><i class="fa fas fa-underline"></i></li>
-          <li><i class="fas fa-strikethrough"></i></li>
+          <li class="toolbar-button" onclick="boldIcon()"><i class="fa fas fa-bold"></i></li>
+          <li class="toolbar-button" onclick="italicIcon()"><i class="fa fas fa-italic"></i></li>
+          <li class="toolbar-button" onclick="underlineIcon()"><i class="fa fas fa-underline"></i></li>
+          <li class="toolbar-button" onClick="strikeThroughIcon()"><i class="fas fa-strikethrough"></i></li>
 
-          <li><i class="fas fa-subscript"></i></li>
-          <li><i class="fas fa-superscript"></i></li>
+          <li class="toolbar-button" onClick="subScriptIcon()"><i class="fas fa-subscript"></i></li>
+          <li class="toolbar-button" onClick="superScriptIcon()"><i class="fas fa-superscript"></i></li>
 
-          <li><i class="fa fas fa-list"></i></li>
-          <li><i class="fa fas fa-list-ol"></i></li>
+          <li class="toolbar-button"><i class="fa fas fa-list"></i></li>
+          <li class="toolbar-button"><i class="fa fas fa-list-ol"></i></li>
 
-          <li><i class="fas fa-align-left"></i></li>
-          <li><i class="fas fa-align-center"></i></li>
-          <li><i class="fas fa-align-right"></i></li>
-          <li><i class="fas fa-align-justify"></i></li>
+          <li class="toolbar-button"><i class="fas fa-align-left"></i></li>
+          <li class="toolbar-button"><i class="fas fa-align-center"></i></li>
+          <li class="toolbar-button"><i class="fas fa-align-right"></i></li>
+          <li class="toolbar-button"><i class="fas fa-align-justify"></i></li>
         </ul>
       </div>
     </div>
