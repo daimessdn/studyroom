@@ -61,7 +61,7 @@ const openDocumentInEditor = (filename) => {
       </div>
     </div>
 
-    <div id="editor-file-content" contenteditable="true">
+    <div id="editor-file-content" contenteditable="true" oninput="autoSaveDocument(openedFile)">
       ${openedFile.content}
     </div>
   `;
@@ -109,6 +109,21 @@ const saveDocument = (filename) => {
   openedFile = files[files.indexOf(fileToBeSaved)];
 
   showNotificationStatus("success", `Saved changes for <strong>${fileToBeSaved.filename}</strong>`);
+}
+
+const autoSaveDocument = (filename) => {
+  fileToBeSaved = files.filter(file => {
+    return file == filename;
+  })[0];
+
+  files[files.indexOf(fileToBeSaved)].content = editorContent.innerHTML;
+  files[files.indexOf(fileToBeSaved)].lastSave = new Date();
+
+  localStorage.setItem("files", JSON.stringify(files));
+
+  openedFile = files[files.indexOf(fileToBeSaved)];
+
+  showNotificationStatus("success", `Auto-saved changes for <strong>${fileToBeSaved.filename}</strong>`);
 }
 
 const renameTitleInEditor = (filename, newFilename) => {
