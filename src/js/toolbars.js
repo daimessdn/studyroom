@@ -83,19 +83,43 @@ const superScriptIcon = () => {
 }
 
 const headerIcon = (hnum) => {
-  let element = document.createElement(`h${hnum}`);
-  console.log(element);
-
-  if (window.getSelection) {
-    const selection = window.getSelection();
-    const range = selection.getRangeAt(0).cloneRange();
-
-    range.surroundContents(element);
-    selection.removeAllRanges();
-
-    selection.addRange(range);
-  } else {
-    element.textContent = `Heading ${hnum}`;
-    editorContent.appendChild(element);
+  if (getSelectionStart().parentNode == editorContent) {
+    switchBetweenElements(getSelectionStart(), document.createElement(`h${hnum}`));
   }
+}
+
+const paragraphIcon = () => {
+  if (getSelectionStart().parentNode == editorContent) {
+    switchBetweenElements(getSelectionStart(), document.createElement("p"));
+  }
+}
+
+const textAlignIcon = (alignment) => {
+  if (getSelectionStart().parentNode == editorContent) {
+    getSelectionStart().style.textAlign = alignment;
+  }
+}
+
+const listIcon = (ordered) => {
+  if (ordered === true) {
+    list = document.createElement("ol");
+  } else {
+    list = document.createElement("ul");
+  }
+
+  if (getSelectionStart().parentNode == editorContent) {
+    switchBetweenElements(getSelectionStart(), list);
+    list.innerHTML = `<li></li>`;
+    list.focus();
+  }
+}
+
+const switchBetweenElements = (oldElement, newElement) => {
+  for (let i = 0; i < oldElement.attributes.length; i++) {
+    newElement.setAttribute(oldElement.attributes.item(i).nodeName, oldElement.attributes.item(i).nodeName);
+  }
+
+  newElement.innerHTML = oldElement.innerHTML;
+
+  oldElement.parentNode.replaceChild(newElement, oldElement);
 }

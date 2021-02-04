@@ -155,3 +155,10 @@ const showNotificationStatus = (status, message) => {
 
   setTimeout(() => { notificationBar.style.display = "none" }, 5000);
 }
+
+const getSelectionStart = () => {
+  let node = document.getSelection().anchorNode;
+  console.log(node.nodeType == 3 ? node.parentNode : node);
+
+  return node.nodeType == 3 ? node.parentNode : node;
+}

@@ -53,6 +53,20 @@ document.addEventListener("keydown", (event) => {
     
     console.log("Text underline saved");
   }
+  // text alignment case
+  else if (event.key == "j" && event.ctrlKey) {
+    event.preventDefault();
+    textAlignIcon("justify");
+  } else if (event.key == "l" && event.ctrlKey) {
+    event.preventDefault();
+    textAlignIcon("left");
+  } else if (event.key == "r" && event.ctrlKey) {
+    event.preventDefault();
+    textAlignIcon("right");
+  } else if (event.key == "e" && event.ctrlKey) {
+    event.preventDefault();
+    textAlignIcon("center");
+  } 
 }, false);
 
 if (window.FileList && window.File) {
@@ -75,7 +89,6 @@ if (window.FileList && window.File) {
         mdToHtmlContent = new showdown.Converter().makeHtml(event.target.result);
         addFile(fileMetadata.name, mdToHtmlContent);
       } else if (fileMetadata.type == "text/plain") {
-        console.log(event.target.result)
         processedText = event.target.result.replace(new RegExp("\n", "g"), "<br />");
         processedText = `<p>${processedText}</p>`;
 

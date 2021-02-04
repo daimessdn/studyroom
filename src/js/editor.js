@@ -34,6 +34,7 @@ const openDocumentInEditor = (filename) => {
           <li class="toolbar-button" onclick="headerIcon(4)"><b>H<span class="subheader-number-symbol">4</span></b></li>
           <li class="toolbar-button" onclick="headerIcon(5)"><b>H<span class="subheader-number-symbol">5</span></b></li>
           <li class="toolbar-button" onclick="headerIcon(6)"><b>H<span class="subheader-number-symbol">6</span></b></li>
+          <li class="toolbar-button" onclick="paragraphIcon()"><i class="fas fa-paragraph"></i></li>
         </ul>
 
         <ul class="toolbar-section" id="formatting-toolbar">
@@ -45,13 +46,13 @@ const openDocumentInEditor = (filename) => {
           <li class="toolbar-button" onClick="subScriptIcon()"><i class="fas fa-subscript"></i></li>
           <li class="toolbar-button" onClick="superScriptIcon()"><i class="fas fa-superscript"></i></li>
 
-          <li class="toolbar-button"><i class="fa fas fa-list"></i></li>
-          <li class="toolbar-button"><i class="fa fas fa-list-ol"></i></li>
+          <li class="toolbar-button" onclick="listIcon(false)"><i class="fa fas fa-list"></i></li>
+          <li class="toolbar-button" onclick="listIcon(true)"><i class="fa fas fa-list-ol"></i></li>
 
-          <li class="toolbar-button"><i class="fas fa-align-left"></i></li>
-          <li class="toolbar-button"><i class="fas fa-align-center"></i></li>
-          <li class="toolbar-button"><i class="fas fa-align-right"></i></li>
-          <li class="toolbar-button"><i class="fas fa-align-justify"></i></li>
+          <li class="toolbar-button"onclick="textAlignIcon('left')"><i class="fas fa-align-left"></i></li>
+          <li class="toolbar-button"onclick="textAlignIcon('center')"><i class="fas fa-align-center"></i></li>
+          <li class="toolbar-button"onclick="textAlignIcon('right')"><i class="fas fa-align-right"></i></li>
+          <li class="toolbar-button"onclick="textAlignIcon('justify')"><i class="fas fa-align-justify"></i></li>
         </ul>
       </div>
     </div>

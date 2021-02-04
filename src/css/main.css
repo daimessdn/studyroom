@@ -185,7 +185,7 @@ input, button {
 }
 
 #new-file-button {
-  border: 1px solid #3f69aa;
+  border: 1px solid #222;
   background-color: #3f69aa;
   color: #fff;
   box-shadow: 0 6px 0 0 #3f69aa, 0 8px 0 0px #222;
