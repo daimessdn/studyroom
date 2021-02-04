@@ -9,8 +9,12 @@ let welcomeSession = `
       </p>
 
       <p>
-        You can also create a document by <strong>drag your file (<code>.txt</code> or <code>.md</code> file)</strong> from outside window.<br />
-        It will create a document with exact name and content based on your file.
+        You can also create a document by <strong>drag your file (<code>.txt</code> or <code>.md</code> file)</strong> externally.
+      </p>
+
+      <p>
+        First time here? <br />
+        <button id="get-started-button" onclick="addFile('Welcome to studyroom', getStartedContent);">Click to get started!</button>
       </p>
     </div>
   </div>`;

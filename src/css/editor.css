@@ -43,7 +43,7 @@
 }
 
 .welcome-content * {
-  margin: 0;
+  margin: 5px;
 }
 
 #editor-file-topbar {

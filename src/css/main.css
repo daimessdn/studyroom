@@ -146,7 +146,7 @@ input, button {
   color: #fff;
 }
 
-#file-list button {
+#file-list button, .welcome-content button {
   /*border: 1px solid #007bff;*/
   border-radius: 10px;
   padding: 5px;
@@ -165,9 +165,14 @@ input, button {
 
 #file-list button:active,
 #new-file-button button:active,
-.duplicate-file-button button:active {
+.duplicate-file-button button:active,
+#get-started-button:active {
   top: 8px;
   box-shadow: none;
+}
+
+#get-started-button {
+  width: 150px;
 }
 
 .delete-file-button {
@@ -184,12 +189,11 @@ input, button {
   box-shadow: 0 6px 0 0 #3f69aa, 0 8px 0 0px #222;
 }
 
-#new-file-button {
+#new-file-button, #get-started-button {
   border: 1px solid #222;
   background-color: #3f69aa;
   color: #fff;
   box-shadow: 0 6px 0 0 #3f69aa, 0 8px 0 0px #222;
-  width: 100px;
 }
 
 .files-filename {
