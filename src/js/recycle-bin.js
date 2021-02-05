@@ -94,6 +94,9 @@ const restoreFile = (fileId) => {
   getDocuments(files);
   getRecycledDocuments(recycleBin);
 
+  localStorage.setItem("files", JSON.stringify(files));
+  localStorage.setItem("recycleBin", JSON.stringify(recycleBin));
+
   showNotificationStatus("success", `Successfully restored<br /><strong>${fileToBeRestored.filename}</strong>.`)
 };
 
@@ -110,6 +113,8 @@ const permanentlyDeleteFile = (fileId) => {
 
   getDocuments(files);
   getRecycledDocuments(recycleBin);
+
+  localStorage.setItem("recycleBin", JSON.stringify(recycleBin));
 
   showNotificationStatus("success", `Permanently deleted<br /><strong>${fileToBePermanentlyDeleted.filename}</strong>.`)
 };
