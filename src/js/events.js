@@ -144,3 +144,33 @@ fileSearch.addEventListener("input", (event) => {
     getDocuments(queryResults);
   }
 });
+
+recycleBinSearch.addEventListener("input", (event) => {
+  recycleBinList.style.justifyContent = "flex-start";
+  recycleBinList.style.alignItems = "flex-start";
+  recycleBinList.style.textAlign = "left";
+
+  queryResults = recycleBin.filter(file => {
+    // console.log(fileElement.children[0].textContent);
+    return file.filename.includes(fileSearch.value);
+  });
+
+  if (queryResults.length === 0) {
+    if (fileSearch.value === "") {
+      getDocuments(queryResults);
+    } else {
+      recycleBinList.innerHTML = `
+        <p class="no-file-search-message">
+          <img src="src/img/file-not-found.svg" /><br />
+          Search not found.
+        </p>
+      `;
+
+      recycleBinList.style.justifyContent = "center";
+      recycleBinList.style.alignItems = "center";
+      recycleBinList.style.textAlign = "center";
+    }
+  } else {
+    getRecycledDocuments(queryResults);
+  }
+});
