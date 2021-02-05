@@ -92,8 +92,7 @@ const getDocuments = (files) => {
           ondragstart="drag(event)"
           ondblclick="openDocumentInEditor('${file.filename}')"
           id="${file.id}"
-          title="${file.filename}.\n
-                 Double-click or drag to editor to open the file.">
+          title="${file.filename}.\nDouble-click or drag to editor to open the file.">
         <div class="files-filename">${file.filename}</div>
         <span class="files-datecreated">Created ${getFileHistory(loadedDate, file.createdAt)}</span>
         <div class="files-action">
@@ -113,7 +112,7 @@ const getDocuments = (files) => {
   } else {
     fileList.innerHTML = `
       <p class="no-file-message">
-        <img src="src/img/file-not-found.svg" /><br />
+        <img src="src/img/file-not-found.svg" style="width: 10vw;" /><br />
         There's nothing here.<br />Create a new one.<br />
         <button id="new-file-button" onclick="document.querySelector('#new-document-modal').style.display = 'flex';">
           <i class="fa fa-plus"></i> New file
