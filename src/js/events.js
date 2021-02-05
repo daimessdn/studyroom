@@ -156,8 +156,8 @@ recycleBinSearch.addEventListener("input", (event) => {
   });
 
   if (queryResults.length === 0) {
-    if (fileSearch.value === "") {
-      getDocuments(queryResults);
+    if (recycleBinSearch.value === "") {
+      getRecycledDocuments(queryResults);
     } else {
       recycleBinList.innerHTML = `
         <p class="no-file-search-message">
