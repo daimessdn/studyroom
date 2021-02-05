@@ -10,5 +10,13 @@
 - Basic editing support: including semantic structures (headings and paragraph), formatting, and text alignments.
 - Keyboard shortcuts supports (for several operations)
 
+# Language features
+- HTML
+- CSS
+- JavaScript
+
+# Library feature(s)
+- [showdownjs](https://github.com/showdownjs/showdown) (A bidirectional Markdown to HTML to Markdown converter written in Javascript)
+
 # Link to demo
 [click here](https://daimessdn.github.io/studyroom)
