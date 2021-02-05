@@ -28,7 +28,7 @@ const getRecycledDocuments = (files) => {
   } else {
     recycleBinList.innerHTML = `
       <p class="no-file-message">
-        <img src="src/img/file-not-found.svg" /><br />
+        <img src="src/img/trash-empty.svg" /><br />
         All clear!
       </p>`;
 
