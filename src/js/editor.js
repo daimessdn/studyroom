@@ -29,7 +29,7 @@ const openDocumentInEditor = (filename) => {
       <h2 id="editor-file-title"
            contenteditable="true"
            title="${openedFile.filename}. Click to rename.">${openedFile.filename}</h2>
-      <p id="editor-file-last-saved">${ openedFile.lastSaved !== null && openedFile.lastSaved.getTime() !== 0 ? "Last saved " + getFileHistory(new Date(), new Date(openedFile.lastSaved)) : ""}</p>
+      <p id="editor-file-last-saved">${ openedFile.lastSaved !== null && openedFile.lastSaved.getTime() !== 0 ? "Last saved " + getFileHistory(new Date(), new Date(openedFile.lastSaved)) : "It seems to be a new file. You can save by pressing <strong>Ctrl</strong> + <strong>S</strong> for your first save."}</p>
 
       <div id="editor-file-toolbar">
         <ul class="toolbar-section" id="semantic-toolbar">
