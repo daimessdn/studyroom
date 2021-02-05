@@ -29,6 +29,7 @@ const openDocumentInEditor = (filename) => {
       <h2 id="editor-file-title"
            contenteditable="true"
            title="${openedFile.filename}. Click to rename.">${openedFile.filename}</h2>
+      <p id="editor-file-last-saved">${ openedFile.lastSaved !== null && openedFile.lastSaved.getTime() !== 0 ? "Last saved " + getFileHistory(new Date(), new Date(openedFile.lastSaved)) : ""}</p>
 
       <div id="editor-file-toolbar">
         <ul class="toolbar-section" id="semantic-toolbar">
@@ -102,7 +103,7 @@ const saveDocument = (filename) => {
   })[0];
 
   files[files.indexOf(fileToBeSaved)].content = editorContent.innerHTML;
-  files[files.indexOf(fileToBeSaved)].lastSave = new Date();
+  files[files.indexOf(fileToBeSaved)].lastSaved = new Date();
 
   localStorage.setItem("files", JSON.stringify(files));
 

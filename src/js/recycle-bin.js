@@ -109,6 +109,15 @@ const permanentlyDeleteFile = (fileId) => {
     return file.id != fileId;
   });
 
+  if (openedFile) {
+    if (openedFile.id == fileId) {
+      editor.innerHTML = welcomeSession;
+      
+      openedFile = null;
+      localStorage.setItem("openedFile", JSON.stringify(openedFile));
+    }
+  }
+
   console.log(files);
 
   getDocuments(files);

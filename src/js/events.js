@@ -14,12 +14,12 @@ document.addEventListener("DOMContentLoaded",() => {
 
   files.forEach(file => {
     file.createdAt = new Date(file.createdAt);
-    file.lastSave = new Date(file.lastSaved);
+    file.lastSaved = new Date(file.lastSaved);
   });
 
   recycleBin.forEach(file => {
     file.createdAt = new Date(file.createdAt);
-    file.lastSave = new Date(file.lastSaved);
+    file.lastSaved = new Date(file.lastSaved);
   });
 
   getDocuments(files);
