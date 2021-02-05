@@ -114,7 +114,7 @@ input, button {
   line-height: 1.5;
 }
 
-#file-search {
+#file-search, #recycle-file-search {
   width: 100%;
   padding: 5px;
   margin: 11px 0 0 0;
@@ -127,10 +127,17 @@ input, button {
 
   font-size: 14px;
   font-weight: bold;
+
+  transition: all .3s ease;
 }
 
-#file-search::placeholder {
+#file-search::placeholder,
+#recycle-file-search::placeholder {
   color: #000;
+}
+
+#recycle-file-search {
+  display: none;
 }
 
 #file-list, #recycle-bin-list {

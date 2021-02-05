@@ -5,6 +5,7 @@ let fileList = document.querySelector("#file-list"),
     openedFileElement;
 
 let recycleBinList = document.querySelector("#recycle-bin-list"),
+    recycleBinSearch = document.querySelector("#recycle-file-search")
     recycleBinElements;
 
 let files = JSON.parse(localStorage.getItem("files"));
