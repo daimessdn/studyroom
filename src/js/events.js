@@ -152,7 +152,7 @@ recycleBinSearch.addEventListener("input", (event) => {
 
   queryResults = recycleBin.filter(file => {
     // console.log(fileElement.children[0].textContent);
-    return file.filename.includes(fileSearch.value);
+    return file.filename.includes(recycleBinSearch.value);
   });
 
   if (queryResults.length === 0) {
