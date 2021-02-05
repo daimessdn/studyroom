@@ -87,8 +87,26 @@ input, button {
   top: 0px;
 }
 
-.sidebar-title h2 {
-  margin: 0;
+.sidebar-title h4 {
+  margin: 0 0 6px 1.5px;
+  padding: 3px 6px;
+  border-radius: 10px;
+  border: 1px solid #fff;
+  display: inline-block;
+
+  position: relative;
+  top: 0;
+  box-shadow: 0 4px 0 0 #aaa, 0 5px 0 0 #fff;
+
+  user-select: none;
+  cursor: pointer;
+
+  transition: all .3s ease;
+}
+
+.sidebar-title h4:active {
+  top: 5px;
+  box-shadow: none;
 }
 
 .no-file-message,
@@ -115,7 +133,7 @@ input, button {
   color: #000;
 }
 
-#file-list {
+#file-list, #recycle-bin-list {
   list-style: none;
   width: 100%;
   padding: 0 0 50px 0;
@@ -128,7 +146,7 @@ input, button {
   animation: file-created .3s ease forwards;
 }
 
-#file-list li {
+#file-list li, #recycle-bin-list li {
   border-radius: 10px;
   background-color: #fff;
   width: 100%;
@@ -146,7 +164,9 @@ input, button {
   color: #fff;
 }
 
-#file-list button, .welcome-content button {
+#file-list button,
+.welcome-content button,
+#recycle-bin-list button {
   /*border: 1px solid #007bff;*/
   border-radius: 10px;
   padding: 5px;
@@ -215,7 +235,11 @@ input, button {
 .files-action {
   display: flex;
   justify-content: flex-end;
-} 
+}
+
+#recycle-bin-list {
+  display: none;
+}
 
 .opened {
   border: 20px solid #23a126;
@@ -235,6 +259,8 @@ input, button {
 
   max-width: 250px;
 
+  text-align: right;
+
   font-size: 13px;
 
   display: none;
@@ -244,6 +270,11 @@ input, button {
   overflow: hidden;
 
   animation: notification-in .5s ease;
+}
+
+.clicked-section-sidebar {
+  background-color: #222;
+  box-shadow: 0 4px 0 0 #222, 0 5px 0 0 #fff;
 }
 
 @keyframes notification-in {

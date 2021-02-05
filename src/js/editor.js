@@ -32,12 +32,12 @@ const openDocumentInEditor = (filename) => {
 
       <div id="editor-file-toolbar">
         <ul class="toolbar-section" id="semantic-toolbar">
-          <li class="toolbar-button" onclick="headerIcon(1)"><b>H<span class="subheader-number-symbol">1</span></b></li>
-          <li class="toolbar-button" onclick="headerIcon(2)"><b>H<span class="subheader-number-symbol">2</span></b></li>
-          <li class="toolbar-button" onclick="headerIcon(3)"><b>H<span class="subheader-number-symbol">3</span></b></li>
-          <li class="toolbar-button" onclick="headerIcon(4)"><b>H<span class="subheader-number-symbol">4</span></b></li>
-          <li class="toolbar-button" onclick="headerIcon(5)"><b>H<span class="subheader-number-symbol">5</span></b></li>
-          <li class="toolbar-button" onclick="headerIcon(6)"><b>H<span class="subheader-number-symbol">6</span></b></li>
+          <li class="toolbar-button" onclick="headerIcon(1)">H<span class="subheader-number-symbol">1</span></li>
+          <li class="toolbar-button" onclick="headerIcon(2)">H<span class="subheader-number-symbol">2</span></li>
+          <li class="toolbar-button" onclick="headerIcon(3)">H<span class="subheader-number-symbol">3</span></li>
+          <li class="toolbar-button" onclick="headerIcon(4)">H<span class="subheader-number-symbol">4</span></li>
+          <li class="toolbar-button" onclick="headerIcon(5)">H<span class="subheader-number-symbol">5</span></li>
+          <li class="toolbar-button" onclick="headerIcon(6)">H<span class="subheader-number-symbol">6</span></li>
           <li class="toolbar-button" onclick="paragraphIcon()"><i class="fas fa-paragraph"></i></li>
         </ul>
 
@@ -108,8 +108,8 @@ const saveDocument = (filename) => {
 
   openedFile = files[files.indexOf(fileToBeSaved)];
 
-  showNotificationStatus("success", `Saved changes for <strong>${fileToBeSaved.filename}</strong>`);
-}
+  showNotificationStatus("success", `Saved changes for<br /><strong>${fileToBeSaved.filename}</strong>`);
+};
 
 const autoSaveDocument = (filename) => {
   fileToBeSaved = files.filter(file => {
@@ -123,8 +123,8 @@ const autoSaveDocument = (filename) => {
 
   openedFile = files[files.indexOf(fileToBeSaved)];
 
-  showNotificationStatus("success", `Auto-saved changes for <strong>${fileToBeSaved.filename}</strong>`);
-}
+  showNotificationStatus("success", `Auto-saved changes for<br /><strong>${fileToBeSaved.filename}</strong>`);
+};
 
 const renameTitleInEditor = (filename, newFilename) => {
   fileToBeRenamed = files.filter(file => {
@@ -145,4 +145,4 @@ const renameTitleInEditor = (filename, newFilename) => {
   getDocuments(files);
 
   openedFile = files[files.indexOf(fileToBeRenamed)];
-}
+};

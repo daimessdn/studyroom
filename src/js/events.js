@@ -2,18 +2,28 @@ document.addEventListener("DOMContentLoaded",() => {
   if (localStorage.getItem("files") === null) {
     console.log("There is no files storage there. Creating...");
     localStorage.setItem("files", JSON.stringify([]));
+
+    console.log("There is no recycle bin storage there. Creating...");
+    localStorage.setItem("recycleBin", JSON.stringify([]));
   }
 
   localStorage.setItem("openedFile", "");
 
   files = JSON.parse(localStorage.getItem("files"));
+  recycleBin = JSON.parse(localStorage.getItem("recycleBin"));
 
   files.forEach(file => {
     file.createdAt = new Date(file.createdAt);
     file.lastSave = new Date(file.lastSaved);
   });
 
+  recycleBin.forEach(file => {
+    file.createdAt = new Date(file.createdAt);
+    file.lastSave = new Date(file.lastSaved);
+  });
+
   getDocuments(files);
+  getRecycledDocuments(recycleBin)
 });
 
 document.fileAdd.addEventListener("submit", (event) => {
@@ -100,7 +110,8 @@ if (window.FileList && window.File) {
 
     reader.readAsText(event.dataTransfer.files[0]);
 
-    showNotificationStatus("success", `Successfully created a document from <strong>${fileMetadata.name}</strong>.`)
+    showNotificationStatus("success",
+                           `Successfully created a document from <strong>${fileMetadata.name}</strong>.`)
   }); 
 }
 

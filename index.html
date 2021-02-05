@@ -18,17 +18,22 @@
   <div id="main">
     <div id="sidebar">
       <div class="sidebar-title">
-        <button id="add-document"
+        <!-- <button id="add-document"
                 onclick="document.querySelector('#new-document-modal').style.display = 'flex';">
                   <i class="fa fa-plus"></i>
-        </button>
+        </button> -->
         
-        <h2>Documents</h2>
+        <h4 onclick="document.querySelector('#new-document-modal').style.display = 'flex';">
+          <i class="fas fa-plus"></i>
+        </h4>
+        <h4 onclick="openFileList(this);">Documents</h4>
+        <h4 onclick="openRecycleBin(this);">Recycle Bin</h4>
 
         <input id="file-search" type="text" placeholder="Search your documents here" />
       </div>
 
       <ul id="file-list"></ul>
+      <ul id="recycle-bin-list"></ul>
     </div>
 
     <div id="editor"
@@ -88,6 +93,8 @@
   <script src="src/js/main.js"></script>
   <script src="src/js/editor.js"></script>
   <script src="src/js/events.js"></script>
+  <script src="src/js/sidebar.js"></script>
+  <script src="src/js/recycle-bin.js"></script>
   <script src="src/js/toolbars.js"></script>
 </body>
 </html>

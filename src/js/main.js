@@ -4,7 +4,11 @@ let fileList = document.querySelector("#file-list"),
     openedFile,
     openedFileElement;
 
+let recycleBinList = document.querySelector("#recycle-bin-list"),
+    recycleBinElements;
+
 let files = JSON.parse(localStorage.getItem("files"));
+let recycleBin = JSON.parse(localStorage.getItem("recycleBin"));
 
 let editor = document.querySelector("#editor"),
     editorTitle,
@@ -22,7 +26,7 @@ const addFile = (filename, content = "<p>Here's your new file. You can type, edi
 
   if (filename != "") {
     files.push({
-      id: `document-${filename.replace(new RegExp(" ", "g"), "_").toLowerCase()}-${files.length}`,
+      id: `document-${makeid(15)}`,
       filename: existingFilenames.length == 0 ? filename : `Copy ${existingFilenames.length} of ${filename}`,
       content: content,
       createdAt: new Date(),
@@ -42,9 +46,9 @@ const deleteDocuments = (element) => {
     return (file.filename) == element.textContent;
   })[0];
 
-  console.log(fileToBeDeleted);
+  recycleBin.push(fileToBeDeleted);
 
-  showNotificationStatus("success", `Successfully deleted <strong>${fileToBeDeleted.filename}</strong>.`)
+  showNotificationStatus("success", `Successfully deleted<br /><strong>${fileToBeDeleted.filename}</strong>.<br />The file is in <strong>Recycle Bin</strong>.`)
   
   if (openedFile) {
     if (openedFile.filename == element.textContent) {
@@ -60,8 +64,10 @@ const deleteDocuments = (element) => {
   });
 
   localStorage.setItem("files", JSON.stringify(files));
+  localStorage.setItem("recycleBin", JSON.stringify(recycleBin));
 
   getDocuments(files);
+  getRecycledDocuments(recycleBin);
 };
 
 const duplicateDocument = (element) => {
@@ -71,7 +77,7 @@ const duplicateDocument = (element) => {
 
   addFile(fileToBeDuplicated.filename, fileToBeDuplicated.content);
 
-  showNotificationStatus("success", `Successfully duplicated <strong>${fileToBeDuplicated.filename}</strong>.`)
+  showNotificationStatus("success", `Successfully duplicated<br /><strong>${fileToBeDuplicated.filename}</strong>.`)
 };
 
 const getDocuments = (files) => {
@@ -86,7 +92,8 @@ const getDocuments = (files) => {
           ondragstart="drag(event)"
           ondblclick="openDocumentInEditor('${file.filename}')"
           id="${file.id}"
-          title="${file.filename}.\nDouble-click or drag to editor to open the file.">
+          title="${file.filename}.\n
+                 Double-click or drag to editor to open the file.">
         <div class="files-filename">${file.filename}</div>
         <span class="files-datecreated">Created ${getFileHistory(loadedDate, file.createdAt)}</span>
         <div class="files-action">
@@ -148,7 +155,12 @@ function drag(ev) {
 function drop(ev) {
   ev.preventDefault();
   var data = ev.dataTransfer.getData("text");
-  openDocumentInEditor(document.getElementById(data).children[0].innerHTML);
+
+  if (document.getElementById(data).parentElement.id == "recycle-bin-list") {
+    openRecycledDocumentInEditor(document.getElementById(data).id);
+  } else if (document.getElementById(data).parentElement.id == "file-list") {
+    openDocumentInEditor(document.getElementById(data).children[0].innerHTML);
+  }
 }
 
 const showNotificationStatus = (status, message) => {
@@ -165,4 +177,14 @@ const getSelectionStart = () => {
   console.log(node.nodeType == 3 ? node.parentNode : node);
 
   return node.nodeType == 3 ? node.parentNode : node;
+}
+
+function makeid(length) {
+   var result           = '';
+   var characters       = '0123456789abcdef';
+   var charactersLength = characters.length;
+   for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
 }

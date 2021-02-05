@@ -46,7 +46,7 @@
   margin: 5px;
 }
 
-#editor-file-topbar {
+#editor-file-topbar, #recycle-file-topbar {
   background-color: #007bff;
   color: #fff;
 
@@ -62,6 +62,20 @@
   display: inline-block;
   margin: 5px 0 10px 0;
   max-width: 300px;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#recycled-file-title {
+  position: relative;
+  font-weight: bold;
+  display: inline-block;
+  margin: 0;
+  max-width: 300px;
+
+  user-select: none;
 
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -114,6 +128,8 @@
   align-items: center;
   justify-content: center;
 
+  font-weight: bold;
+
   width: 28px;
   height: 28px;
 
@@ -143,9 +159,9 @@
 
 .toolbar-section li b { color: #fff; font-size: 14px; }
 .toolbar-section li:hover b { color: blue; }
-.subheader-number-symbol { font-size: 10px }
+.subheader-number-symbol { font-size: 16px }
 
-#editor-file-content {
+#editor-file-content, #recycled-file-content {
   padding: 10px;
   width: 100%;
 
@@ -156,6 +172,9 @@
 
 #editor-file-content p,
 #editor-file-content ul li,
-#editor-file-content ol li {
+#editor-file-content ol li,
+#recycled-file-content p,
+#recycled-file-content ul li,
+#recycled-file-content ol li {
   line-height: 1.5;
 }
