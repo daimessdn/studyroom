@@ -114,6 +114,16 @@ const listIcon = (ordered) => {
   }
 }
 
+const codeIcon = (ordered) => {
+  code = document.createElement("pre");
+
+  if (getSelectionStart().parentNode == editorContent) {
+    switchBetweenElements(getSelectionStart(), code);
+    code.innerHTML = `<code></code>`;
+    code.focus();
+  }
+}
+
 const switchBetweenElements = (oldElement, newElement) => {
   for (let i = 0; i < oldElement.attributes.length; i++) {
     newElement.setAttribute(oldElement.attributes.item(i).nodeName, oldElement.attributes.item(i).nodeName);

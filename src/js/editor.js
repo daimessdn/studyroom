@@ -40,6 +40,7 @@ const openDocumentInEditor = (filename) => {
           <li class="toolbar-button" onclick="headerIcon(5)">H<span class="subheader-number-symbol">5</span></li>
           <li class="toolbar-button" onclick="headerIcon(6)">H<span class="subheader-number-symbol">6</span></li>
           <li class="toolbar-button" onclick="paragraphIcon()"><i class="fas fa-paragraph"></i></li>
+          <li class="toolbar-button" onclick="codeIcon()"><i class="fas fa-code"></i></li>
         </ul>
 
         <ul class="toolbar-section" id="formatting-toolbar">
