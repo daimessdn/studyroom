@@ -16,12 +16,9 @@
 </head>
 <body>
   <div id="main">
+    <!-- SIDEBAR SECTION -->
     <div id="sidebar">
       <div class="sidebar-title">
-        <!-- <button id="add-document"
-                onclick="document.querySelector('#new-document-modal').style.display = 'flex';">
-                  <i class="fa fa-plus"></i>
-        </button> -->
         
         <h4 onclick="document.querySelector('#new-document-modal').style.display = 'flex';">
           <i class="fas fa-plus"></i>
@@ -37,6 +34,7 @@
       <ul id="recycle-bin-list"></ul>
     </div>
 
+    <!-- EDITOR SECTION -->
     <div id="editor"
          spellcheck="true"
          ondrop="drop(event)"
@@ -64,10 +62,12 @@
     </div>
   </div>
 
+  <!-- NOTIFICATION TRIGGER -->
   <div id="notification-trigger">
     Notification will be shown here.
   </div>
 
+  <!-- MODALS -->
   <div class="modal" id="new-document-modal">
     <div class="modal-window">
       <span class="close"
